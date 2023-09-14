@@ -30,11 +30,11 @@ function setup() {
 
     //Doing the ears
         //left ear
-    arc(450, 155, 80, 80, 0, PI + QUARTER_PI, PIE);
+    arc(445, 155, 80, 80, 0, PI + QUARTER_PI, PIE);
     describe('A purple ellipse. The top-right third is missing.');
+        
         //right ear
-    
-    arc(200, 155, 80, 80, 0, PI + QUARTER_PI, PIE);
+    arc(200, 155, 80, 80, - QUARTER_PI, PI, PIE);
     describe('A purple ellipse. The top-right third is missing.');
 
     //Center eye part
