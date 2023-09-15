@@ -156,30 +156,41 @@ function setup() {
     circle(322,450,45); 
     fill(222,115,221); //lighter color pink 
     circle(322,450,30);
+    fill(250, 172, 249); //last layer color pink
+    circle(322,450,20); 
     
         //circle on the right first one 
     fill(204,61,202);
     circle(422,425,35); 
     fill(222,115,221); //ligther color pink
     circle(422,425,20); 
+    fill(250, 172, 249); //last layer color pink
+    circle(422,425,10); 
+
     
         //circle on the right second one 
     fill(204,61,202);
     circle(500,380,25);
     fill(222,115,221); //lighter color pink 
     circle(500,380,15); 
+    fill(250, 172, 249); //last layer color pink
+    circle(500,380,5); 
 
         //circle on the left fist one 
     fill(204,61,202);
     circle(222,425,35);
     fill(222,115,221); //lighter color pink
     circle(222,425,20); 
+    fill(250, 172, 249); //last layer color pink
+    circle(222,425,10); 
         
-        //circle on the lesft second one
+        //circle on the left second one
     fill(204,61,202);
     circle(135,380,25);
     fill(222,115,221); //lighter color pink
     circle(135,380,15);
+    fill(250, 172, 249); //last layer color pink
+    circle(135,380,5); 
 
 
 
