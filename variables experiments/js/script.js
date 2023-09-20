@@ -14,13 +14,16 @@
 function preload() {
 
 }
-
+let backgroundColour = (500,200,100);
+let circleSize = 500;
+let circleX = 250;
+let circleY = 100;
 
 /**
  * Description of setup
 */
 function setup() {
-    createCanvas(windowWidth,windowHeight);
+    createCanvas(500,500);
     
 }
 
@@ -29,8 +32,10 @@ function setup() {
  * Description of draw()
 */
 function draw() {
-    background(mouseX,70,200);
+    background(backgroundColour);
     fill(90,600,700);
-    rectMode(CENTER);
-    rect(width/2,height/2,100,100);
+    /*ellipse(250,250,400,400);
+    ellipse(250,250,300,300);
+    ellipse(250,250,200,200);*/
+    ellipse(circleX,circleY,circleSize);
 }
