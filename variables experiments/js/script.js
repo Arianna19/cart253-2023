@@ -15,9 +15,10 @@ function preload() {
 
 }
 let backgroundColour = (500,200,100);
-let circleSize = 500;
-let circleX = 250;
-let circleY = 100;
+let circleSize = 200;
+let circleX = 100;
+let circleY = 250;
+let circleSpeed = 3;
 
 /**
  * Description of setup
@@ -37,5 +38,8 @@ function draw() {
     /*ellipse(250,250,400,400);
     ellipse(250,250,300,300);
     ellipse(250,250,200,200);*/
+    circleX = circleX + circleSpeed;
+    circleSpeed += circleSpeed + 0.25;
     ellipse(circleX,circleY,circleSize);
+
 }
