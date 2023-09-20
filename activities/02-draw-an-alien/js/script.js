@@ -13,8 +13,8 @@
 */
 function preload() {
 
+    
 }
-
 
 /**
  * Basically the entire body of my purple aliennn
@@ -36,8 +36,6 @@ function setup() {
         bezier(480,0,550,90,590,20,650,0); //last dark bezier from left
         noStroke();
 
-
-
             //shading for slime darker green layer one
         fill(62, 97, 63); 
         stroke(62, 97, 63);
@@ -46,7 +44,6 @@ function setup() {
         bezier(355,0,365,15,395,205,475,0);
         bezier(465,0,545,85,585,15,645,0);
         noStroke();
-
 
             //main slime colour light green
         fill(106, 145, 107);
@@ -57,6 +54,8 @@ function setup() {
         bezier(460,0,540,80,580,10,640,0);
         noStroke();
 
+
+
     //For drawing the body
         //shading of the body dark purple
     fill(63,24,82);
@@ -65,6 +64,8 @@ function setup() {
     fill(131,50,168);
     ellipse(320,480,500,660);
     
+
+
     //Doing the ears
         //right ear
     fill(63,24,82); //shading left ear dark purple
@@ -87,6 +88,8 @@ function setup() {
         fill(63,24,82); //main ear part
         arc(205,165,45,45, - QUARTER_PI, PI, PIE);
 
+
+
     //Center eye part
     fill(109, 36, 143); //shading for center part area light purple
     ellipse(320,300,320,220);
@@ -99,6 +102,8 @@ function setup() {
 
     fill(63,24,82); //main center part of the eye area
     ellipse(320,300,300,200);
+
+
 
     //Draw the eyes
         //left eye white part
@@ -118,10 +123,14 @@ function setup() {
     fill(48,45,45);
     ellipse(395,300,40,40);
 
-     //main mouth
+
+
+    //main mouth
     fill(226,213,232);
     arc(320,355,50,50,0, PI + QUARTER_PI, OPEN);
     describe('Cirlce with missing arc on top');
+
+
 
     //antenna for alien
         //rectangle part
@@ -129,6 +138,8 @@ function setup() {
     rect(315,50,25,110);
     fill(131,50,168);
     rect(310,50,20,110); //light purple rectangle main
+
+
 
     //circular top
         //antenna shading under layer dark purple
@@ -149,7 +160,7 @@ function setup() {
     circle(322,50,10); //last layer white
 
 
-
+    
     //dot patterns around the head start from center
         //center circle
     fill(204,61,202);
@@ -167,7 +178,6 @@ function setup() {
     fill(250, 172, 249); //last layer color pink
     circle(422,425,10); 
 
-    
         //circle on the right second one 
     fill(204,61,202);
     circle(500,380,25);
@@ -193,9 +203,6 @@ function setup() {
     circle(135,380,5); 
 
 
-
-
-
 }   
 
 
@@ -203,6 +210,7 @@ function setup() {
  * Description of draw()
 */
 function draw() {
+
 
 
 }
