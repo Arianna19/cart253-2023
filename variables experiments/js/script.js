@@ -14,11 +14,15 @@
 function preload() {
 
 }
-let backgroundColour = (500,200,100);
-let circleSize = 200;
-let circleX = 100;
-let circleY = 250;
-let circleSpeed = 3;
+let backgroundColour = 0;
+let circle = {
+    x: 0,
+    y: 250,
+    size: 100,
+    speed: 1,
+    fill: (60,60,40)
+}
+ 
 
 /**
  * Description of setup
@@ -34,12 +38,16 @@ function setup() {
 */
 function draw() {
     background(backgroundColour);
-    fill(90,600,700);
-    /*ellipse(250,250,400,400);
-    ellipse(250,250,300,300);
-    ellipse(250,250,200,200);*/
-    circleX = circleX + circleSpeed;
-    circleSpeed += circleSpeed + 0.25;
-    ellipse(circleX,circleY,circleSize);
+    
+    circle.x = circle.x + circle.speed;
+    circle.x = constrain(circle.x,0,width);
+    
+    //circle.size = map(mouseY,height,0,100,500);
+    circle.fill = map(circle.x, 0,width,0,255); 
+                    //thing we want to convert, starting range it comes from, 
+                    //      same thing, new range you want within, same
+
+    fill(circle.fill);
+    ellipse(circle.x, circle.y, circle.size);
 
 }
