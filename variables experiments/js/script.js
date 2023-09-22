@@ -20,7 +20,7 @@ let circle = {
     y: 250,
     size: 100,
     speed: 1,
-    fill: (60,60,40)
+    fill: (200,50,90),
 }
  
 
