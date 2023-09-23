@@ -97,8 +97,8 @@ let colorY = 100
 
 function draw() {
     //color pallete change within a purple constraint
-    colorX = constrain(map(mouseX,0,500,60,170),115,170)
-    colorY = constrain(map(mouseY,0,500,50,119),50,119)
+    colorX = constrain(map(mouseX,0,500,60,170),80,170);
+    colorY = constrain(map(mouseY,0,500,50,119),50,119);
     background(colorX,colorY,171) ;
     happyGuy(0,0);
 
