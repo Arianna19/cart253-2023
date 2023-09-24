@@ -58,6 +58,7 @@ function arcMouth(x,y) {
     let etX = constrain(map(mouseX,0,500,-100+40,100-40),-100+40,100-40) 
     let etY = constrain(map(mouseY,0,500,-100+40,100-40),-100+40,100-40) 
 
+
     //draw images
     push();
     fill(0);
