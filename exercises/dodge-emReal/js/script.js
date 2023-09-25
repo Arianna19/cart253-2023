@@ -14,9 +14,9 @@
 
 
 
-
+let img;
 function preload() {
-
+   // img = loadImage('assets/laDefense.jpg');
 }
 
 
@@ -55,8 +55,8 @@ function setup() {
 
     bowser.y = random(0,height);
     bowser.velocityX = bowser.speed;
-
-    noCursor(); //removes the cursor and you just play as kirby
+   // image(img, 0, 0);
+    
 }
 
 
