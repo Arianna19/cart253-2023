@@ -57,7 +57,7 @@ let user = { //kirby description
 let turtle = { //turtle dude
     x: 250,
     y: 250,
-    size: 100,
+    size: 150,
     velocityX:0,
     velocityY:0,
     speed:7,
@@ -69,7 +69,6 @@ let turtle = { //turtle dude
 }
 
 function setup() {
-
     createCanvas(windowWidth, windowHeight);
 
     bowser.y = random(0,height); //spawn
