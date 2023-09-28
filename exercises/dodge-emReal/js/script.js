@@ -15,8 +15,13 @@
 
 
 let img;
+let imgB;
+let imgT;
+
 function preload() {
-   // img = loadImage('assets/laDefense.jpg');
+   img = loadImage('assets/images/kirbyInhale.png');
+   imgB = loadImage('assets/images/bowserBad.png');
+   imgT = loadImage('assets/images/turtleDude.png');
 }
 
 
@@ -26,22 +31,36 @@ function preload() {
 let bowser = { //settings of the thing that will "hurt" kirby 
     x:0,
     y:250,
-    size:150,
+    sizeB: 200,
+    sizeBo: 250,
     velocityX:0,
     velocityY:0,
-    speed:5,
+    speed:7,
     fill: {
         r: 244, //yellow color
         g: 255,
         b: 92
-
     } 
 }
 
-let user = {
+let user = { //kirby description
     x: 250,
     y: 250,
-    size: 50,
+    size: 100,
+    fill: {
+        r2: 255,
+        g2: 130,
+        b2: 245
+    }
+}
+
+let turtle = { //turtle dude
+    x: 250,
+    y: 250,
+    size: 100,
+    velocityX:0,
+    velocityY:0,
+    speed:7,
     fill: {
         r2: 255,
         g2: 130,
@@ -54,8 +73,12 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
 
     bowser.y = random(0,height);
+    turtle.x = random(width, 0);
+
+
+    turtle.velocityY = turtle.speed;
     bowser.velocityX = bowser.speed;
-   // image(img, 0, 0);
+    noCursor();
     
 }
 
@@ -66,9 +89,10 @@ function setup() {
 function draw() {
 
     background(130,228,255);
+    
 
     //fun background things, making it crazy 
-    for (let i = 0; i < 150; i++) { 
+    for (let i = 0; i < 50; i++) { 
     let s = random(0,width);
     let s2 = random(0,height);
     strokeWeight(10);
@@ -76,11 +100,18 @@ function draw() {
     point(s,s2);
     }
 
+    //the way turtle moves to hurt kirby 
+    turtle.x = turtle.x + turtle.velocityX;
+    turtle.y = turtle.y + turtle.velocityY;
 
+    if (turtle.y > height) {
+        turtle.y = 0;
+        turtle.x = random(width,0);
+    }
 
     //the way bowser moves to eat kirby
-    bowser.x = bowser.x + bowser.velocityX
-    bowser.y = bowser.y + bowser.velocityY
+    bowser.x = bowser.x + bowser.velocityX;
+    bowser.y = bowser.y + bowser.velocityY;
 
     if (bowser.x > width) {
         bowser.x = 0;
@@ -88,24 +119,58 @@ function draw() {
     }
 
     //how user kirby moves across the screen
-    user.x = mouseX;
-    user.y = mouseY;
+    user.x = mouseX - user.size/2;
+    user.y = mouseY - user.size/2;
 
-    //if kirby is sadly caught by bowser -> stops the program when they meet
+    //if kirby is sadly caught by bowser/turtle dude -> stops the program when they meet
     let kDeath = dist(user.x,user.y,bowser.x,bowser.y);
-        if (kDeath < bowser.size/2 + user.size/2) {
+        if (kDeath < bowser.sizeB/2 + user.size/2) {
+            noLoop();
+        }
+    
+    let kDeathT = dist(user.x,user.y,turtle.x,turtle.y);
+        if (kDeathT < turtle.size/2 + user.size/2) {
             noLoop();
         }
 
+    //the way turtle dude appears 
+    fill(turtle.fill.r,turtle.fill.g,turtle.fill.b);
+    image(imgT, turtle.x, turtle.y, turtle.size, turtle.size);
+
     //the way bowser appears
     fill(bowser.fill.r,bowser.fill.g,bowser.fill.b);
-    noStroke();
-    ellipse(bowser.x, bowser.y, bowser.size);
+    image(imgB, bowser.x, bowser.y, bowser.sizeB, bowser.sizeBo);
 
-    //kirby spawn (user)
-    fill(user.fill.r2,user.fill.g2,user.fill.b2); //using the rgb values given at the top
-    ellipse(user.x,user.y,user.size);
+    //changing kirby colour based on movement (if else statement)
+    if (mouseX === pmouseX && mouseY === pmouseY) {
+        push();
+        image(img, user.x, user.y, user.size, user.size); //regular colour 
+        pop();
+   
+      
+    } else {
+        push();
+        tint(random(255), random(255), random(255)); //any colour based off of movement
+        image(img, user.x, user.y, user.size, user.size);
+        pop();
+    }
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
