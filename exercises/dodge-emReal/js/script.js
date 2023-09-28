@@ -92,11 +92,11 @@ function draw() {
     
 
     //fun background things, making it crazy 
-    for (let i = 0; i < 50; i++) { 
+    for (let i = 0; i < 10; i++) { 
     let s = random(0,width);
     let s2 = random(0,height);
-    strokeWeight(10);
-    stroke(219,211,44);
+    strokeWeight(25);
+    stroke(255);
     point(s,s2);
     }
 
