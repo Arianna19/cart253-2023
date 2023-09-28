@@ -72,10 +72,8 @@ function setup() {
 
     createCanvas(windowWidth, windowHeight);
 
-    bowser.y = random(0,height);
-    turtle.x = random(width, 0);
-
-
+    bowser.y = random(0,height); //spawn
+    turtle.x = random(width, 0); //spawn
     turtle.velocityY = turtle.speed;
     bowser.velocityX = bowser.speed;
     noCursor();
@@ -92,7 +90,7 @@ function draw() {
     
 
     //fun background things, making it crazy 
-    for (let i = 0; i < 10; i++) { 
+    for (let i = 0; i < 10; i++) { //every frame 10 dots need to appear per 60sec
     let s = random(0,width);
     let s2 = random(0,height);
     strokeWeight(25);
@@ -114,7 +112,7 @@ function draw() {
     bowser.y = bowser.y + bowser.velocityY;
 
     if (bowser.x > width) {
-        bowser.x = 0;
+        bowser.x = 0; //if reaches the edge he restarts
         bowser.y = random(0,height);
     }
 
@@ -146,7 +144,6 @@ function draw() {
         push();
         image(img, user.x, user.y, user.size, user.size); //regular colour 
         pop();
-   
       
     } else {
         push();
@@ -154,9 +151,6 @@ function draw() {
         image(img, user.x, user.y, user.size, user.size);
         pop();
     }
-
-
-
 }
 
 
