@@ -140,12 +140,12 @@ function draw() {
     image(imgB, bowser.x, bowser.y, bowser.sizeB, bowser.sizeBo);
 
     //changing kirby colour based on movement (if else statement)
-    if (mouseX === pmouseX && mouseY === pmouseY) {
+    if (mouseX === pmouseX && mouseY === pmouseY) { //if before and after are different change
         push();
         image(img, user.x, user.y, user.size, user.size); //regular colour 
         pop();
       
-    } else {
+    } else { //if the mouse is at the same position as the previous "draw" don't change colour
         push();
         tint(random(255), random(255), random(255)); //any colour based off of movement
         image(img, user.x, user.y, user.size, user.size);
