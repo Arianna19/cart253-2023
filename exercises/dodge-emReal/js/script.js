@@ -1,9 +1,8 @@
 /**
- * Covid-19 (please don't happen again)
+ * DODGE-EM !!!
  * Arianna Narita
  * 
- * Idea is: kirby eating cakes and bowser chasing him
- */
+ * Idea is: kirby being chased by a bunch of bad guys but also changes colour
 
 "use strict";
 
@@ -57,7 +56,7 @@ let user = { //kirby description
 let turtle = { //turtle dude
     x: 250,
     y: 250,
-    size: 150,
+    size: 100,
     velocityX:0,
     velocityY:0,
     speed:7,
@@ -73,6 +72,7 @@ function setup() {
 
     bowser.y = random(0,height); //spawn
     turtle.x = random(width, 0); //spawn
+
     turtle.velocityY = turtle.speed;
     bowser.velocityX = bowser.speed;
     noCursor();
@@ -115,9 +115,12 @@ function draw() {
         bowser.y = random(0,height);
     }
 
+    //how the star appears on screen
+
     //how user kirby moves across the screen
     user.x = mouseX - user.size/2;
     user.y = mouseY - user.size/2;
+
 
     //if kirby is sadly caught by bowser/turtle dude -> stops the program when they meet
     let kDeath = dist(user.x,user.y,bowser.x,bowser.y);
@@ -137,7 +140,7 @@ function draw() {
     //the way bowser appears
     fill(bowser.fill.r,bowser.fill.g,bowser.fill.b);
     image(imgB, bowser.x, bowser.y, bowser.sizeB, bowser.sizeBo);
-
+        
     //changing kirby colour based on movement (if else statement)
     if (mouseX === pmouseX && mouseY === pmouseY) { //if before and after are different change
         push();
@@ -150,6 +153,7 @@ function draw() {
         image(img, user.x, user.y, user.size, user.size);
         pop();
     }
+
 }
 
 
