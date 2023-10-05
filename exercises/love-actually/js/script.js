@@ -1,8 +1,8 @@
 /**
- * LOVE ACTUALLY 
+ * LOVE ACTUALLY (KIRBY ACTUALLY)
  * Arianna Narita
  * Kirby finding his love for cookies by chasing them 
- * Easter egg ending is if user touches upper right corner kirby inflates and becomes "fat"
+ * Easter egg ending is if user touches border kirby inflates and becomes "fat"
  * 
  */
 
@@ -30,7 +30,7 @@ let kirby = {
         g: 130,
         b: 245
     }
-};
+}
 
 let kirbyCookie = {
     x: undefined,
@@ -39,16 +39,17 @@ let kirbyCookie = {
     sizeC: 55,
     vx: 0,
     vy: 0,
-    speed: 3,
+    speed: 5,
     fill: {
         r2: 255,
         g2: 130,
         b2: 245
     }
-};
+}
 
 
 function preload() {
+
     imgKirby = loadImage('assets/images/kirbyInhale.png');
     imgCookie = loadImage('assets/images/cookie.png');
     imgFatKirby = loadImage('assets/images/fatKirby.png');
@@ -69,15 +70,13 @@ function setup() {
 }
 
 function setUpCharacters() {
+
     //where the cookie and kirby will appear
     kirby.x = width / 3;
     kirbyCookie.x = 2 * width / 3;
 
 
-    //Where kirby and the cookie move and start
-    kirby.vx = random(-kirby.speed, kirby.speed);
-    kirby.vy = random(-kirby.speed, kirby.speed);
-
+    //How the cookie moves from the start randomly spawning and using a random speed
     kirbyCookie.vx = random(-kirbyCookie.speed, kirbyCookie.speed);
     kirbyCookie.vy = random(-kirbyCookie.speed, kirbyCookie.speed);
 
@@ -90,8 +89,12 @@ function setUpCharacters() {
 function draw() {
 
     background("pink");
-    corner();
+    border();
     menu();
+    restart();
+    badEndingRestart();
+    checkOffscreen();
+    isOffscreen();
 
     if (state === `start`) { //clicking space to start 
         start();
@@ -102,12 +105,13 @@ function draw() {
     else if (state === `happy eating`) { //cookie spawning randomly 
         happyEating();
     }
-    else if (state === `hungry kirby :()`) { //kirby gets a cookie and is happy 
+    else if (state === `hungry kirby`) { //kirby gets a cookie and is happy 
         hungryKirby();
     }
 }
 
 function start() {
+
     push();
     textSize(50);
     fill('Yellow');
@@ -121,31 +125,46 @@ function start() {
     textAlign(CENTER, CENTER);
     text('~enter to start~', width / 2, 450);
     pop();
+
 }
 
 function simulation() {
+
     move();
     checkOffscreen();
     checkOverlap();
     display();
+
 }
 
+
 function happyEating() {
+
+    //what displays depending on the differnt stages of the 'gane'
     push();
     textSize(90);
     fill('yellow');
     textAlign(CENTER, CENTER);
-    text('YUUM!!! ^_^', width / 2, height / 2);
+    text('YUUM!!! ٩(^ᴗ^)۶', width / 2, height / 2);
     pop();
+
+    push();
+    textSize(20);
+    fill('blue');
+    textAlign(CENTER, CENTER);
+    text('~enter to restart~', width / 2, 450);
+    pop();
+
 }
 
 function hungryKirby() {
     push();
-    textSize(90);
+    textSize(50);
     fill('purple');
     textAlign(CENTER, CENTER);
-    text('Hungry Kirby :(', width / 2, height / 2);
+    text('hungry Kirby (╯°□°)╯︵ ┻━┻', width / 2, height / 2);
     pop();
+
 }
 
 function move() {
@@ -157,27 +176,25 @@ function move() {
     kirbyCookie.x = kirbyCookie.x + kirbyCookie.vx;
     kirbyCookie.y = kirbyCookie.y + kirbyCookie.vy;
 
-
 }
 
 function checkOffscreen() {
 
     //checks if cookie goes off the screen
-    if (isOffscreen(kirbyCookie)) {
-        state = `hungry kirby :(`;
+    if (isOffscreen(kirbyCookie) && state === 'simulation') {
+        state = `hungry kirby`;
     }
 }
 
 function isOffscreen() {
-    if (kirbyCookie.x < 0 || kirbyCookie.x > width || kirbyCookie.y < 0 || kirbyCookie.y > height) {
-        state = 'hungry kirby';
-    }
-    else {
-        return false;
+
+    if (kirbyCookie.x < 0 || kirbyCookie.x > width || kirbyCookie.y < 0 || kirbyCookie.y > height && state === 'simulation') {
+        state = `hungry kirby`;
     }
 }
 
 function checkOverlap() {
+
     //if the cookie was eaten by kirby 
     let d = dist(kirby.x, kirby.y, kirbyCookie.x, kirbyCookie.y);
     if (d < kirby.size / 2 + kirbyCookie.size / 2) {
@@ -196,22 +213,37 @@ function display() {
     image(imgCookie, kirbyCookie.x, kirbyCookie.y, kirbyCookie.size, kirbyCookie.sizeC);
     fill(kirbyCookie.fill.r2, kirbyCookie.fill.g2, kirbyCookie.fill.b2);
 
-
 }
 
 function menu() { 
+
     //how the player starts the cookie game
     if (keyIsDown(ENTER) && state === 'start') {
         state = 'simulation';
     }
 }
 
+function restart() {
 
+    //how to restart the game when user wins with the cookie
+    if (keyIsDown(ENTER) && state === 'happy eating') {
+        state = 'simulation';
+    }
+}
 
-function corner() {
+function badEndingRestart() {
+
+    //how to restart the game when user doesn't get the cookie before it leaves the screen
+    if (keyIsDown(ESCAPE) && state === `hungry kirby`) {
+        state = 'start';
+    }
+}
+
+function border() {
+
     //if the player hits the border of the canvas kirby becomes fat 
     //Easter egg part of exercise
-    console.log(kirby.x);
+    //and extra function
     if (kirby.x <= 0 || kirby.x >= 720 || kirby.y <= 0 || kirby.y >= 720) {
          imgKirby = imgFatKirby;
     }
