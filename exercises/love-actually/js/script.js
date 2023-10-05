@@ -16,6 +16,7 @@
 let imgKirby;
 let imgCookie;
 let imgFatKirby;
+let imgKirby2;
 
 let kirby = {
     x: undefined,
@@ -51,8 +52,11 @@ let kirbyCookie = {
 function preload() {
 
     imgKirby = loadImage('assets/images/kirbyInhale.png');
+    imgKirby2 = loadImage('assets/images/kirbyInhale.png');
+
     imgCookie = loadImage('assets/images/cookie.png');
     imgFatKirby = loadImage('assets/images/fatKirby.png');
+
 }
 
 
@@ -67,18 +71,23 @@ function setup() {
     setUpCharacters();
     noCursor();
 
+
 }
 
 function setUpCharacters() {
 
     //where the cookie and kirby will appear
     kirby.x = width / 3;
-    kirbyCookie.x = 2 * width / 3;
+    kirbyCookie.x = random(200,600);
+    kirbyCookie.y = random(200,600);
 
 
     //How the cookie moves from the start randomly spawning and using a random speed
     kirbyCookie.vx = random(-kirbyCookie.speed, kirbyCookie.speed);
     kirbyCookie.vy = random(-kirbyCookie.speed, kirbyCookie.speed);
+
+    //restarting as normal size kirby
+    imgKirby = imgKirby2;
 
 }
 
@@ -123,7 +132,7 @@ function start() {
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('~enter to start~', width / 2, 450);
+    text('~click enter to start~', width / 2, 450);
     pop();
 
 }
@@ -152,7 +161,7 @@ function happyEating() {
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('~enter to restart~', width / 2, 450);
+    text('~click enter to restart~', width / 2, 450);
     pop();
 
 }
@@ -165,6 +174,12 @@ function hungryKirby() {
     text('hungry Kirby (╯°□°)╯︵ ┻━┻', width / 2, height / 2);
     pop();
 
+    push();
+    textSize(20);
+    fill('blue');
+    textAlign(CENTER, CENTER);
+    text('~click enter to restart~', width / 2, 450);
+    pop();
 }
 
 function move() {
@@ -228,14 +243,16 @@ function restart() {
     //how to restart the game when user wins with the cookie
     if (keyIsDown(ENTER) && state === 'happy eating') {
         state = 'simulation';
+       setUpCharacters();
     }
 }
 
 function badEndingRestart() {
-
     //how to restart the game when user doesn't get the cookie before it leaves the screen
-    if (keyIsDown(ESCAPE) && state === `hungry kirby`) {
-        state = 'start';
+    if (keyIsDown(ENTER) && state === `hungry kirby`) {
+        state = 'simulation';
+        setUpCharacters();
+
     }
 }
 
