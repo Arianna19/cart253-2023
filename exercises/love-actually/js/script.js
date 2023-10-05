@@ -14,27 +14,44 @@
 
 
 let imgKirby;
+let imgCookie;
+let imgFatKirby;
 
 let kirby = {
     x: undefined,
     y: 250,
-    size: 50,
+    size: 80,
+    sizeK: 80,
     vx: 0,
     vy: 0,
-    speed: 3
+    speed: 3,
+    fill: {
+        r: 255,
+        g: 130,
+        b: 245
+    }
 };
 
 let kirbyCookie = {
     x: undefined,
     y: 250,
-    size: 20,
+    size: 55,
+    sizeC: 55,
     vx: 0,
     vy: 0,
-    speed: 3
+    speed: 3,
+    fill: {
+        r2: 255,
+        g2: 130,
+        b2: 245
+    }
 };
+
 
 function preload() {
     imgKirby = loadImage('assets/images/kirbyInhale.png');
+    imgCookie = loadImage('assets/images/cookie.png');
+    imgFatKirby = loadImage('assets/images/fatKirby.webp');
 }
 
 
@@ -42,10 +59,14 @@ function preload() {
  * Description of setup
 */
 
-let state = 'first screen'; 
+let state = 'start';
 
 function setup() {
-    createCanvas(800,800);
+    createCanvas(800, 800);
+    //kirby.x = width/3;
+    //kirbyCookie.x = 2 * width/3;
+    //kirby.vx = random(-kirby.speed,kirby.speed);
+    //kirby.vx = random(-kirby.speed,kirby.speed);
     setUpCharacters();
 
 }
@@ -57,11 +78,11 @@ function setUpCharacters() {
 
 
     //Where kirby and the cookie move and start
-    kirby.vx = random(-kirby.speed,kirby.speed);
-    kirby.vy = random(-kirby.speed,kirby.speed);
-    kirbyCookie.vx = random(-circle2.speed,circle2.speed);
-    kirbyCookie.vy = random(-kirbyCookie.speed,kirbyCookie.speed);
+    kirby.vx = random(-kirby.speed, kirby.speed);
+    kirby.vy = random(-kirby.speed, kirby.speed);
 
+    kirbyCookie.vx = random(-kirbyCookie.speed, kirbyCookie.speed);
+    kirbyCookie.vy = random(-kirbyCookie.speed, kirbyCookie.speed);
 
 }
 
@@ -70,7 +91,11 @@ function setUpCharacters() {
  * Description of draw()
 */
 function draw() {
-    background
+
+    background("pink");
+
+    menu();
+
     if (state === `start`) { //clicking space to start 
         start();
     }
@@ -78,25 +103,26 @@ function draw() {
         simulation();
     }
     else if (state === `happy eating`) { //cookie spawning randomly 
-        cookie(); 
-  }
-    else if (state === `hungry kirby`) { //kirby gets a cookie and is happy 
-        noCookie();
+        happyEating();
+    }
+    else if (state === `hungry kirby :()`) { //kirby gets a cookie and is happy 
+        hungryKirby();
+    }
 }
 
 function start() {
     push();
     textSize(50);
-    fill('pink');
+    fill('Yellow');
     textAlign(CENTER, CENTER);
-    text('Hungry?')
+    text('Hungry?', width / 2, height / 2);
     pop();
 
     push();
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('space to start')
+    text('~enter to start~', width / 2, 450);
     pop();
 }
 
@@ -107,43 +133,46 @@ function simulation() {
     display();
 }
 
-function cookie() {
+function happyEating() {
     push();
-    textSize(70);
+    textSize(90);
     fill('yellow');
     textAlign(CENTER, CENTER);
-    text('YUUM', width/2, height/2);
+    text('YUUM!!! XD', width / 2, height / 2);
     pop();
 }
 
-function noCookie() {
+function hungryKirby() {
     push();
-    textSize(60);
+    textSize(90);
     fill('purple');
     textAlign(CENTER, CENTER);
-    text('Hungry Kirby :(', width/2, height/2);
+    text('Hungry Kirby :(', width / 2, height / 2);
     pop();
 }
 
 function move() {
-    //Move Kirby by user's mouse
-    kirby.x = mouseX - kirby.size/2;
-    kirby.y = mouseY - kirby.size/2;
 
-    //cookie spawns randomly 
-    cookie.x = cookie.x + cookie.vx;
-    cookie.y = cookie.y + cookie.vy;
+    //how user controls kirby using the mouse
+    kirby.x = mouseX - kirby.size / 2;
+    kirby.y = mouseY - kirby.size / 2;
+
+    kirbyCookie.x = kirbyCookie.x + kirbyCookie.vx;
+    kirbyCookie.y = kirbyCookie.y + kirbyCookie.vy;
+
+
 }
 
 function checkOffscreen() {
+
     //checks if cookie goes off the screen
     if (isOffscreen(kirbyCookie)) {
-        state = `hungry kirby`;
+        state = `hungry kirby :(`;
     }
 }
 
-function checkOffscreen(imgKirby) {
-    if (imgKirby.x < 0 || imgKirby.x > width || imgKirby.y < 0 || imgKirby.y > height) {
+function isOffscreen(imgCookie) {
+    if (kirbyCookie.x < 0 || kirbyCookie.x > width || kirbyCookie.y < 0 || kirbyCookie.y > height) {
         return true;
     }
     else {
@@ -151,5 +180,37 @@ function checkOffscreen(imgKirby) {
     }
 }
 
+function checkOverlap() {
+    //if the cookie was eaten by kirby 
+    let d = dist(kirby.x, kirby.y, kirbyCookie.x, kirbyCookie.y);
+    if (d < kirby.size / 2 + kirbyCookie.size / 2) {
+        state = 'happy eating';
+    }
+}
+
+function display() {
+
+    //spawn kirby and his cookie during the simulation state
+    //display kirby 
+    fill(kirby.fill.r, kirby.fill.g, kirby.fill.b);
+    image(imgKirby, kirby.x, kirby.y, kirby.size, kirby.size);
+
+    //display the cookie
+    image(imgCookie, kirbyCookie.x, kirbyCookie.y, kirbyCookie.size, kirbyCookie.sizeC);
+    fill(kirbyCookie.fill.r2, kirbyCookie.fill.g2, kirbyCookie.fill.b2);
+
 
 }
+
+function menu() {
+    if (keyIsDown(ENTER) && state === 'start') {
+        state = 'simulation';
+    }
+}
+
+
+
+
+
+
+
