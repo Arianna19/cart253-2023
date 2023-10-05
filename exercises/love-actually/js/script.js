@@ -51,7 +51,7 @@ let kirbyCookie = {
 function preload() {
     imgKirby = loadImage('assets/images/kirbyInhale.png');
     imgCookie = loadImage('assets/images/cookie.png');
-    imgFatKirby = loadImage('assets/images/fatKirby.webp');
+    imgFatKirby = loadImage('assets/images/fatKirby.png');
 }
 
 
@@ -63,11 +63,8 @@ let state = 'start';
 
 function setup() {
     createCanvas(800, 800);
-    //kirby.x = width/3;
-    //kirbyCookie.x = 2 * width/3;
-    //kirby.vx = random(-kirby.speed,kirby.speed);
-    //kirby.vx = random(-kirby.speed,kirby.speed);
     setUpCharacters();
+    noCursor();
 
 }
 
@@ -93,7 +90,7 @@ function setUpCharacters() {
 function draw() {
 
     background("pink");
-
+    corner();
     menu();
 
     if (state === `start`) { //clicking space to start 
@@ -138,7 +135,7 @@ function happyEating() {
     textSize(90);
     fill('yellow');
     textAlign(CENTER, CENTER);
-    text('YUUM!!! XD', width / 2, height / 2);
+    text('YUUM!!! ^_^', width / 2, height / 2);
     pop();
 }
 
@@ -171,9 +168,9 @@ function checkOffscreen() {
     }
 }
 
-function isOffscreen(imgCookie) {
+function isOffscreen() {
     if (kirbyCookie.x < 0 || kirbyCookie.x > width || kirbyCookie.y < 0 || kirbyCookie.y > height) {
-        return true;
+        state = 'hungry kirby';
     }
     else {
         return false;
@@ -202,9 +199,21 @@ function display() {
 
 }
 
-function menu() {
+function menu() { 
+    //how the player starts the cookie game
     if (keyIsDown(ENTER) && state === 'start') {
         state = 'simulation';
+    }
+}
+
+
+
+function corner() {
+    //if the player hits the border of the canvas kirby becomes fat 
+    //Easter egg part of exercise
+    console.log(kirby.x);
+    if (kirby.x <= 0 || kirby.x >= 720 || kirby.y <= 0 || kirby.y >= 720) {
+         imgKirby = imgFatKirby;
     }
 }
 
