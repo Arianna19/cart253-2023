@@ -1,10 +1,11 @@
-/**
- * Title of Project
- * Author Name
+/*
+ * Project 1: Halloween Kirby
+ * Arianna Sanchez Narita
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * Mini game about Kirby dodging ghosts and bats.
+ * Kirby's objective is to collect 31 (oct 31st = Halloween) candies without dying
  */
+
 
 "use strict";
 
