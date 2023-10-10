@@ -89,6 +89,7 @@ function ghosts() {
 }
 
 function kirby() {
+    //how user controls kirby
 
 }
 
