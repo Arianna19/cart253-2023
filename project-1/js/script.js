@@ -36,6 +36,8 @@ function draw() {
     kirby();
     bigCandy();
     smallCandy();
+    kirbyLives();
+    candyCounter();
 
     /*if (state === `start`) { //clicking space to start 
         start();
@@ -103,34 +105,126 @@ function kirbyTricked() {
 
 }
 
+let bCandy = {
+    x: 600,
+    y: 500,
+    size: 55,
+    sizeBC: 80,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+    fill: {
+        r: 255,
+        g: 20,
+        b: 20
+    }
+}
+
+
 function bigCandy() {
     //when interacted with kirby +5
-    rect(600, 500, 55, 80);
+    push();
+    rect(bCandy.x, bCandy.y, bCandy.size, bCandy.sizeBC);
+    fill(bCandy.fill.r, bCandy.fill.g, bCandy.fill.b);
+    pop();
+    
+}
 
+let sCandy = {
+    x: 670,
+    y: 500,
+    size: 35,
+    sizeSC: 35,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+    fill: {
+        r: 20,
+        g: 255,
+        b: 20
+    }
 }
 
 function smallCandy() {
     //when interacted with kirby +3 points
-    rect(670, 500, 35, 35);
+    push();
+    rect(sCandy.x, sCandy.y, sCandy.size, sCandy.sizeSC);
+    fill(sCandy.fill.r, sCandy.fill.g, sCandy.fill.b);
+    pop();
 
+}
+
+let bats = {
+    x: 650,
+    y: 400,
+    size: 60,
+    sizeB: 60,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+    fill: {
+        r: 0,
+        g: 0,
+        b: 0
+    }
 }
 
 function bat() {
     //when interacted with kirby -1 life (bad element)
-    circle(650, 400, 60, 60);
+    push();
+    circle(bats.x, bats.y, bats.size, bats.sizeB);
+    fill(bats.fill.r, bats.fill.g, bats.fill.b);
+    pop();
 
+}
+
+let ghost = {
+    x: 550,
+    y: 400,
+    size: 90,
+    sizeG: 60,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+    fill: {
+        r: 255,
+        g: 255,
+        b: 255
+    }
 }
 
 function ghosts() {
     //when interacted with kirby -1 life (bad element)
-    circle(550, 400, 80, 60);
+    push();
+    circle(ghost.x, ghost.y, ghost.size, ghost.sizeG);
+    fill(ghost.fill.r, ghost.fill.g, ghost.fill.b);
+    pop();
 
 
 }
 
+let kirbyUser = {
+    x: 200,
+    y: 50,
+    size: 50,
+    sizeK: 100,
+    vx: 0,
+    vy: 0,
+    speed: 3,
+    fill: {
+        r: 255,
+        g: 255,
+        b: 255
+    }
+}
+
+
 function kirby() {
     //how user controls kirby
-    ellipse(200, mouseY, 60, 80);
+    push();
+    ellipse(kirbyUser.x, mouseY, kirbyUser.size, kirbyUser.sizeK);
+    fill(kirbyUser.fill.r, kirbyUser.fill.g, kirbyUser.fill.b);
+    pop();
     
 
     
@@ -139,6 +233,9 @@ function kirby() {
 }
 
 function restartGame() {
+
+   // if (keyIsDown(ENTER) && state === `happy halloween`) {
+   //     state = 'simulation';
 
 }
 
@@ -154,8 +251,10 @@ function candyCounter() {
 
 function kirbyLives() {
     //user gets 3 lives at the beginning of game
-    let lives = 0;
+    let lives = 3;
+    if (lives <= 3 && (kirby === ghosts || kirby === bat)) {
+        lives -= 1; 
+        return lives;
+    }
     
-    
-
 }
