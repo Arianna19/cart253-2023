@@ -198,9 +198,15 @@ function ghosts() {
     push();
     circle(ghost.x, ghost.y, ghost.size, ghost.sizeG);
     fill(ghost.fill.r, ghost.fill.g, ghost.fill.b);
+    
     pop();
 
 
+
+}
+
+function spawn() {
+    ghost = random(20, height-20);
 }
 
 let kirbyUser = {
@@ -226,10 +232,6 @@ function kirby() {
     fill(kirbyUser.fill.r, kirbyUser.fill.g, kirbyUser.fill.b);
     pop();
     
-
-    
-    
-
 }
 
 function restartGame() {
@@ -247,6 +249,11 @@ function candyCounter() {
         return i;
     }
 
+    textSize(20);
+    text('Candies collected: ' + i, 30, 40);
+    
+
+
 }
 
 function kirbyLives() {
@@ -256,5 +263,8 @@ function kirbyLives() {
         lives -= 1; 
         return lives;
     }
+
+    textSize(20);
+    text('Life: ' + lives, 700, 40);
     
 }
