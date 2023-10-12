@@ -19,10 +19,7 @@ function preload() {
  * Description of setup
 */
 function setup() {
-    createCanvas(800,800);
-
-    
-
+    createCanvas(800, 800);
 }
 
 
@@ -31,240 +28,97 @@ function setup() {
 */
 function draw() {
     background('pink');
-    bat();
-    ghosts();
-    kirby();
-    bigCandy();
-    smallCandy();
-    kirbyLives();
-    candyCounter();
-
-    /*if (state === `start`) { //clicking space to start 
-        start();
-    }
-    //Kirby dodging and collecting candies (main part)
-    else if (state === `simulation`) { 
-        simulation();
-    }
-    //good ending when user collects 31 candies 
-    else if (state === `happy halloween`) { 
-        happyHalloween();
-    }
-
-    //bad ending of the game where user interacts with over 3 bad elements
-    else if (state === `kirby tricked`) {
-        kirbyTricked();
-    } */
-}
-
-function start() {
-    //start screen/main menu 
-    
-
-    push();
-    textSize(20);
-    fill('blue');
-    textAlign(CENTER, CENTER);
-    text('~click enter to start~', width / 2, 450);
-    pop();
-    
+    Kirby();
+    platform();
+    overlap()
 
 }
 
-function simulation() {
-    //where user is dodging bad elements and collecting candy
 
-}
+let kirbyVal = {
 
-function happyHalloween() {
-    //good ending screen
-    push();
-    textSize(90);
-    fill('yellow');
-    textAlign(CENTER, CENTER);
-    text('You Did it Happy Halloween ٩(^ᴗ^)۶', width / 2, height / 2);
-    pop();
-
-}
-
-function kirbyTricked() {
-    //bad ending screen
-    push();
-    textSize(50);
-    fill('purple');
-    textAlign(CENTER, CENTER);
-    text('Kirby Got Tricked', width / 2, height / 2);
-    pop();
-
-    push();
-    textSize(20);
-    fill('blue');
-    textAlign(CENTER, CENTER);
-    text('~Click enter to try again~', width / 2, 450);
-    pop();
-
-}
-
-let bCandy = {
-    x: 600,
-    y: 500,
-    size: 55,
-    sizeBC: 80,
-    vx: 0,
-    vy: 0,
-    speed: 3,
+    x: 50,
+    y: 750,
+    size: 80,
+    sizeK: 80,
+    velocity: .4,
+    floor: 750,
     fill: {
         r: 255,
-        g: 20,
-        b: 20
+        g: 130,
+        b: 245
     }
 }
 
+function Kirby() { 
 
-function bigCandy() {
-    //when interacted with kirby +5
-    push();
-    rect(bCandy.x, bCandy.y, bCandy.size, bCandy.sizeBC);
-    fill(bCandy.fill.r, bCandy.fill.g, bCandy.fill.b);
-    pop();
+    circle(kirbyVal.x, kirbyVal.y, kirbyVal.size, kirbyVal.sizeK);
+
+
+    //how user moves kirby left and right
+    if (keyIsDown(LEFT_ARROW)) {
+        kirbyVal.x -= 5 * (deltaTime / 50);
+    }
+
+    if (keyIsDown(RIGHT_ARROW)) {
+        kirbyVal.x += 5 * (deltaTime / 50);
+    }
+
+    if (keyIsDown(32)) {
+        kirbyVal.y -= 100  * (deltaTime / 50);
+    }
     
-}
 
-let sCandy = {
-    x: 670,
-    y: 500,
-    size: 35,
-    sizeSC: 35,
-    vx: 0,
-    vy: 0,
-    speed: 3,
-    fill: {
-        r: 20,
-        g: 255,
-        b: 20
+    console.log((kirbyVal.y + (8 * (deltaTime / 50))))
+    if (kirbyVal.y != kirbyVal.floor && kirbyVal.y < kirbyVal.floor ) {
+        kirbyVal.y +=30  * (deltaTime / 50);
     }
-}
-
-function smallCandy() {
-    //when interacted with kirby +3 points
-    push();
-    rect(sCandy.x, sCandy.y, sCandy.size, sCandy.sizeSC);
-    fill(sCandy.fill.r, sCandy.fill.g, sCandy.fill.b);
-    pop();
+    
 
 }
 
-let bats = {
-    x: 650,
-    y: 400,
-    size: 60,
-    sizeB: 60,
-    vx: 0,
-    vy: 0,
-    speed: 3,
-    fill: {
-        r: 0,
-        g: 0,
-        b: 0
-    }
-}
 
-function bat() {
-    //when interacted with kirby -1 life (bad element)
-    push();
-    circle(bats.x, bats.y, bats.size, bats.sizeB);
-    fill(bats.fill.r, bats.fill.g, bats.fill.b);
-    pop();
 
-}
+let rectangle = {
 
-let ghost = {
-    x: 550,
-    y: 400,
-    size: 90,
-    sizeG: 60,
-    vx: 0,
-    vy: 0,
-    speed: 3,
+    x: 400,
+    y: 600,
+    sizeR1: 300,
+    sizeR2: 10,
+    velocity: .4,
     fill: {
         r: 255,
-        g: 255,
-        b: 255
+        g: 130,
+        b: 245
     }
 }
 
-function ghosts() {
-    //when interacted with kirby -1 life (bad element)
+
+function platform() {
+
+    
+    rect(rectangle.x, rectangle.y, rectangle.sizeR1, rectangle.sizeR2);
     push();
-    circle(ghost.x, ghost.y, ghost.size, ghost.sizeG);
-    fill(ghost.fill.r, ghost.fill.g, ghost.fill.b);
-    
-    pop();
+    stroke(255,0,255);
+    line(rectangle.x, rectangle.y, rectangle.x + rectangle.sizeR1, rectangle.y);
+    pop()
 
 
 
 }
 
-function spawn() {
-    ghost = random(20, height-20);
-}
 
-let kirbyUser = {
-    x: 200,
-    y: 50,
-    size: 50,
-    sizeK: 100,
-    vx: 0,
-    vy: 0,
-    speed: 3,
-    fill: {
-        r: 255,
-        g: 255,
-        b: 255
-    }
-}
+function overlap () {
 
 
-function kirby() {
-    //how user controls kirby
-    push();
-    ellipse(kirbyUser.x, mouseY, kirbyUser.size, kirbyUser.sizeK);
-    fill(kirbyUser.fill.r, kirbyUser.fill.g, kirbyUser.fill.b);
-    pop();
-    
-}
-
-function restartGame() {
-
-   // if (keyIsDown(ENTER) && state === `happy halloween`) {
-   //     state = 'simulation';
-
-}
-
-function candyCounter() {
-    //keeps track of the amount of candies collected by user
-    let i = 0;
-    if (i < 31 && (kirby === bigCandy || kirby === smallCandy)) {
-        i++;
-        return i;
+    if (kirbyVal.x > rectangle.x && kirbyVal.x < rectangle.x + rectangle.sizeR1) {
+        kirbyVal.floor = rectangle.y; 
+    } else {
+        kirbyVal.floor = 750;
     }
 
-    textSize(20);
-    text('Candies collected: ' + i, 30, 40);
-    
-
 
 }
 
-function kirbyLives() {
-    //user gets 3 lives at the beginning of game
-    let lives = 3;
-    if (lives <= 3 && (kirby === ghosts || kirby === bat)) {
-        lives -= 1; 
-        return lives;
-    }
 
-    textSize(20);
-    text('Life: ' + lives, 700, 40);
-    
-}
+
