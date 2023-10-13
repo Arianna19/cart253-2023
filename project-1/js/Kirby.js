@@ -13,7 +13,6 @@ class Kirby {
 
     draw(){
         this.control();
-        console.log("hi")
         circle(this.x, this.y, this.size, this.sizeK);
         
     }
