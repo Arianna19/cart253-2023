@@ -8,117 +8,47 @@
 
 
 "use strict";
+//import Kirby from 'js/Kirby'; 
 
 
 function preload() {
 
 }
 
-
+//let cam
+let kirb = new Kirby();
+let rects = new Rectangle();
 /**
  * Description of setup
 */
 function setup() {
     createCanvas(800, 800);
+    //cam = createCamera();
 }
 
 
-/**
- * Description of draw()
-*/
+
 function draw() {
     background('pink');
-    Kirby();
-    platform();
-    overlap()
+    rects.draw();
+    kirb.draw();
+   // translate(i,j)
 
+ 
 }
 
-
-let kirbyVal = {
-
-    x: 50,
-    y: 750,
-    size: 80,
-    sizeK: 80,
-    velocity: .4,
-    floor: 750,
-    fill: {
-        r: 255,
-        g: 130,
-        b: 245
-    }
-}
-
-function Kirby() { 
-
-    circle(kirbyVal.x, kirbyVal.y, kirbyVal.size, kirbyVal.sizeK);
-
-
-    //how user moves kirby left and right
-    if (keyIsDown(LEFT_ARROW)) {
-        kirbyVal.x -= 5 * (deltaTime / 50);
-    }
-
-    if (keyIsDown(RIGHT_ARROW)) {
-        kirbyVal.x += 5 * (deltaTime / 50);
-    }
-
-    if (keyIsDown(32)) {
-        kirbyVal.y -= 100  * (deltaTime / 50);
-    }
-    
-
-    console.log((kirbyVal.y + (8 * (deltaTime / 50))))
-    if (kirbyVal.y != kirbyVal.floor && kirbyVal.y < kirbyVal.floor ) {
-        kirbyVal.y +=30  * (deltaTime / 50);
-    }
-    
-
-}
-
-
-
-let rectangle = {
-
-    x: 400,
-    y: 600,
-    sizeR1: 300,
-    sizeR2: 10,
-    velocity: .4,
-    fill: {
-        r: 255,
-        g: 130,
-        b: 245
-    }
-}
-
-
-function platform() {
-
-    
-    rect(rectangle.x, rectangle.y, rectangle.sizeR1, rectangle.sizeR2);
-    push();
-    stroke(255,0,255);
-    line(rectangle.x, rectangle.y, rectangle.x + rectangle.sizeR1, rectangle.y);
-    pop()
-
-
-
-}
-
-
+/*
 function overlap () {
 
-
-    if (kirbyVal.x > rectangle.x && kirbyVal.x < rectangle.x + rectangle.sizeR1) {
-        kirbyVal.floor = rectangle.y; 
+    //when user interacts with a new platform that platform now becomes the new floor they use
+    if (kirb.x > rectangle.x && kirb.x < rectangle.x + rectangle.sizeR1) {
+        kirb.floor = rectangle.y; 
     } else {
-        kirbyVal.floor = 750;
+        kirb.floor = 750;
     }
 
 
 }
-
+*/
 
 
