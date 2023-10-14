@@ -29,63 +29,23 @@ function setup() {
 }
 
 
-
-console.log(rects.verticalBot())
-console.log(rects2.verticalBot())
-console.log(rects3.verticalBot())
 function draw() {
 
     background('pink');
 
     rects.draw();
-   // rects2.draw();
-   // rects3.draw();
+    rects2.draw();
+    rects3.draw();
     kirb.draw();
 
+    push();
+    textSize(50);
+    fill('purple')
+    text('Points: ' + Rectangle.points, 50, 100);
+    pop();
 
-}
-
-/*
-function death() {
-    if (rects.x==kirb.x) {
-        if (kirb.y > rects.yT && kirb.y < rects.heightT + rects.yT) {
-            //console.log("i died ")
-        }
-        if (kirb.y > rects.yB && kirb.y <  rects.heightB + rects.yB) {
-          //  console.log("i died2 ")
-
-        }
-    }
-
-    if (rects.heightT >= kirb.y) {
-        if (kirb.x > rects.x && kirb.x < rects.x + rects.width)
-            console.log("top ")
-    }
-
-    if (rects.yB <= kirb.y) {
-        if (kirb.x > rects.x && kirb.x < rects.x + rects.width)
-            console.log("bottom")
-
-    }
-    
-
-    
-
-}
-*/
-
-/*
-function overlap () {
-
-    //when user interacts with a new platform that platform now becomes the new floor they use
-    if (kirb.x > rectangle.x && kirb.x < rectangle.x + rectangle.sizeR1) {
-        kirb.floor = rectangle.y; 
-    } else {
-        kirb.floor = 750;
-    }
+    if (!kirb.alive)
+        noLoop()
 
 
 }
-*/
-
-

@@ -8,6 +8,7 @@ class Kirby {
         this.sizeK = 80
         this.velocity = .4
         this.floor = 750
+        this.alive = true
        // this.cam = cam;
     }
 

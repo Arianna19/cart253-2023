@@ -2,6 +2,7 @@
 class Rectangle {
 
     static numberRects = 0;
+    static points = 0;
 
     constructor(kirbyy) {
         this.dot = Math.floor(Math.random() * (600 - 300 + 1) + 300);
@@ -24,25 +25,16 @@ class Rectangle {
         rect(this.x, this.yB, this.width, this.heightB); //bottom rectangle
         this.platform();
         this.death();
-        //this.x--;
+        this.x--;
 
         //if the x of the rectangles reaches less than 0 to start over and use the random function
         if (this.x <= 0) {
             this.x = this.canvasWidth;
             this.random();
+            this.constructor.points++;
         }
 
 
-    }
-
-    verticalTop() {
-
-        return this.heightT;
-    }
-
-    verticalBot() {
-
-        return this.heightB;
     }
 
     random() {
@@ -91,23 +83,25 @@ class Rectangle {
     death() {
         if (this.x == this.kirb.x) {
             if (this.kirb.y > this.yT && this.kirb.y < this.heightT + this.yT) {
-                console.log("i died ")
+                this.kirb.alive = false
             }
             if (this.kirb.y > this.yB && this.kirb.y < this.heightB + this.yB) {
-                 console.log("i died2 ")
+                this.kirb.alive = false
 
             }
         }
 
         if (this.heightT >= this.kirb.y) {
-            if (this.kirb.x > this.x && this.kirb.x < this.x + this.width)
-                console.log("top ")
+            if (this.kirb.x > this.x && this.kirb.x < this.x + this.width) {
+                this.kirb.alive = false
+            }
         }
-    
+
         if (rects.yB <= kirb.y) {
-            if (this.kirb.x > this.x && this.kirb.x < this.x + this.width)
-                console.log("bottom")
-    
+            if (this.kirb.x > this.x && this.kirb.x < this.x + this.width) {
+                this.kirb.alive = false
+            }
+
         }
     }
 }
