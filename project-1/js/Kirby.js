@@ -19,14 +19,14 @@ class Kirby {
 
     control(){
         if (keyIsDown(LEFT_ARROW)) {
-            this.x -= 5 * (deltaTime / 50);            
+            this.x -= 1          
         }
     
         if (keyIsDown(RIGHT_ARROW)) {
-            this.x += 5 * (deltaTime / 50);
+            this.x += 1 
         }
     
-        if (keyIsDown(32)) {
+        if (keyIsDown(32)||touches!=0) {
             this.y -= 100  * (deltaTime / 50);
         }
     

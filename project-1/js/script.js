@@ -17,49 +17,62 @@ function preload() {
 
 //let cam
 let kirb = new Kirby();
-let rects = new Rectangle();
-let rects2 = new Rectangle();
+let rects = new Rectangle(kirb);
+let rects2 = new Rectangle(kirb);
+let rects3 = new Rectangle(kirb);
 
 /**
  * Description of setup
 */
 function setup() {
-    createCanvas(800, 1300);
-    //cam = createCamera();
+    createCanvas(800, 800);
 }
 
-var lol = false
 
+
+console.log(rects.verticalBot())
+console.log(rects2.verticalBot())
+console.log(rects3.verticalBot())
 function draw() {
-    if(!lol){
-        rects2.x = 200
-        lol =true
-    }
+
     background('pink');
-    rects.x-- 
-    rects2.x-- 
 
-    if(rects.x<=0){
-        rects.x = 800
-        rects.random()
-    }
-    if(rects2.x<=0){
-        rects2.x = 800
-        rects2.random()
-    }
     rects.draw();
-    rects2.draw();
-
+   // rects2.draw();
+   // rects3.draw();
     kirb.draw();
-    push()
-    stroke(80, 20, 255);
-    strokeWeight(4);
-    line(0,1000,800,1000)
-    pop()
-   // translate(i,j)
 
- 
+
 }
+
+/*
+function death() {
+    if (rects.x==kirb.x) {
+        if (kirb.y > rects.yT && kirb.y < rects.heightT + rects.yT) {
+            //console.log("i died ")
+        }
+        if (kirb.y > rects.yB && kirb.y <  rects.heightB + rects.yB) {
+          //  console.log("i died2 ")
+
+        }
+    }
+
+    if (rects.heightT >= kirb.y) {
+        if (kirb.x > rects.x && kirb.x < rects.x + rects.width)
+            console.log("top ")
+    }
+
+    if (rects.yB <= kirb.y) {
+        if (kirb.x > rects.x && kirb.x < rects.x + rects.width)
+            console.log("bottom")
+
+    }
+    
+
+    
+
+}
+*/
 
 /*
 function overlap () {
