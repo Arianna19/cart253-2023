@@ -81,7 +81,7 @@ class Rectangle {
     }
 
     death() {
-        if (this.x == this.kirb.x) {
+        if (this.x == this.kirb.x + (this.kirb.size/2)) {
             if (this.kirb.y > this.yT && this.kirb.y < this.heightT + this.yT) {
                 this.kirb.alive = false
             }
@@ -91,13 +91,13 @@ class Rectangle {
             }
         }
 
-        if (this.heightT >= this.kirb.y) {
+        if (this.heightT >= this.kirb.y - (this.kirb.size/2)) {
             if (this.kirb.x > this.x && this.kirb.x < this.x + this.width) {
                 this.kirb.alive = false
             }
         }
 
-        if (rects.yB <= kirb.y) {
+        if (this.yB <= this.kirb.y + (this.kirb.size/2)) {
             if (this.kirb.x > this.x && this.kirb.x < this.x + this.width) {
                 this.kirb.alive = false
             }
