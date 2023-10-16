@@ -4,9 +4,9 @@ class Rectangle {
     static numberRects = 0;
     static points = 0;
 
-    constructor(kirbyy) {
-        this.dot = Math.floor(Math.random() * (600 - 300 + 1) + 300);
-        this.size = Math.floor(Math.random() * (300 - 100 + 1) + 100);
+    constructor(kirbyy, wall) {
+        this.dot = Math.floor(Math.random() * (600 - 200 + 1) + 200);
+        this.size = Math.floor(Math.random() * (300 - 150 + 1) + 150);
         this.kirb = kirbyy;
         this.canvasHeigth = 800;
         this.canvasWidth = 800;
@@ -17,13 +17,14 @@ class Rectangle {
         this.heightT = this.dot;
         this.heightB = this.canvasHeigth - (this.size + this.dot);
         this.constructor.numberRects += 1;
+        this.photo1 = wall;
+
     }
 
     draw() {
 
-        rect(this.x, this.yT, this.width, this.heightT); //top rectangle
+        image(imgWall, this.x, this.yT, this.width, this.heightT); //top rectangle
         rect(this.x, this.yB, this.width, this.heightB); //bottom rectangle
-        this.platform();
         this.death();
         this.x--;
 
@@ -40,46 +41,14 @@ class Rectangle {
     random() {
 
         //where the random whole appears that user can fly through
-        this.dot = random(300, 600); //random starting point of hole
-        this.size = random(100, 300); //random size of hole/length
+        this.dot = random(200, 600); //random starting point of hole
+        this.size = random(150, 300); //random size of hole/length
         this.yB = this.size + this.dot;
         this.heightT = this.dot;
         this.heightB = (this.canvasHeigth - (this.size + this.dot));
     }
 
-    platform() {
-
-        //bottom rectangle pink line
-        push();
-        stroke(255, 0, 255);
-        strokeWeight(4);
-        line(this.x, this.yB, this.x, this.yB + this.heightB);
-        pop();
-
-        //horizontal pink line
-        push();
-        stroke(255, 0, 255);
-        strokeWeight(4);
-        line(this.x, this.yB, this.x + this.width, this.yB);
-        pop();
-
-
-        //top rectangle blue line
-        push();
-        stroke(20, 0, 255);
-        strokeWeight(4);
-        line(this.x, this.yT, this.x, this.yT + this.heightT);
-        pop();
-
-        //horizontal blue line
-        push();
-        stroke(20, 0, 255);
-        strokeWeight(4);
-        line(this.x, this.heightT, this.x + this.width, this.heightT);
-        pop();
-
-    }
-
+   
     death() {
         if (this.x == this.kirb.x + (this.kirb.size/2)) {
             if (this.kirb.y > this.yT && this.kirb.y < this.heightT + this.yT) {
