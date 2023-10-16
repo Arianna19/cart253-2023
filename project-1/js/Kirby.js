@@ -4,7 +4,7 @@ class Kirby {
     constructor() {
         this.x = 50
         this.y = 750
-        this.size = 20
+        this.size = 80
         this.sizeK = 20
         this.velocity = .4
         this.floor = 750
@@ -14,8 +14,7 @@ class Kirby {
 
     draw(){
         this.control();
-        circle(this.x, this.y, this.size, this.sizeK);
-        
+        circle(this.x, this.y, this.size, this.sizeK);        
     }
 
     control(){
@@ -28,11 +27,11 @@ class Kirby {
         }
     
         if (keyIsDown(32)||touches!=0) {
-            this.y -= 20  * (deltaTime / 50);
+            this.y -= 30  * (deltaTime / 50);
         }
     
         if (this.y != this.floor && this.y < this.floor ) {
-            this.y += 10  * (deltaTime / 50);
+            this.y += 15  * (deltaTime / 50);
         }
     } 
 
