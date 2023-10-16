@@ -21,10 +21,10 @@ class Kirby {
 
         //how the user controls kirby 
         if (keyIsDown(32)||touches!=0) { //if space is pressed down or if screen is touched for phones 
-            this.y -= 30  * (deltaTime / 50); 
+            this.y -= 30  * (deltaTime / 50); //delta time is just to make the transitions smooth looking ish 
         }
     
-        if (this.y != this.floor && this.y < this.floor ) {
+        if (this.y != this.floor && this.y < this.floor ) { //if kirby is not on the bound of the floor then pull him down, basically gravity
             this.y += 15  * (deltaTime / 50);
         }
     } 

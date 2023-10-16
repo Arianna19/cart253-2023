@@ -58,7 +58,7 @@ function start() {
 
     push();
     textSize(100);
-    fill(255, 149, 0);
+    fill(255, 128, 0);
     textAlign(CENTER, CENTER);
     textFont('Georgia');
     text('Trick or Treat', width / 2, height / 2);
@@ -88,7 +88,7 @@ function simulation() {
     textSize(40);
     textFont('Georgia');
     fill(224, 188, 4)
-    text('Points: ' + Rectangle.points, 50, 100);
+    text('Score: ' + Rectangle.points, 35, 50);
     pop();
 
 
@@ -108,8 +108,8 @@ function youDied() {
     pop();
 
     push();
-    textSize(80);
-    fill(156, 6, 31);
+    textSize(100);
+    fill(171, 5, 5);
     textAlign(CENTER, CENTER);
     textFont('Georgia');
     text('Kirby Got Tricked', width / 2, height / 2);
@@ -120,15 +120,15 @@ function youDied() {
     fill(255, 217, 0);
     textAlign(CENTER, CENTER);
     textFont('Georgia');
-    text('Click ESC to Restart', width / 2, 450);
+    text('Click ESC to Restart', width / 2, 490);
     pop();
 
     push();
     textSize(50);
     textFont('Georgia');
-    fill(237, 225, 164)
+    fill(255, 217, 0)
     textAlign(CENTER, CENTER);
-    text('Score: ' + Rectangle.points, width / 2, 280);
+    text('Score: ' + Rectangle.points, width / 2, 310); //what dispays the score during simulati
     pop();
 
 

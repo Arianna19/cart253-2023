@@ -23,8 +23,18 @@ class Rectangle {
 
     draw() {
 
-        image(imgWall, this.x, this.yT, this.width, this.heightT); //drawing the image of the top obstacle
-        rect(this.x, this.yB, this.width, this.heightB); //drawing the image of the bottom obstacle
+        push();
+        fill('purple');
+        noStroke();
+        rect(this.x, this.yT, this.width, this.heightT, this.yB); //drawing the image of the top obstacle
+        pop();
+
+        push();
+        fill(255, 128, 0)
+        noStroke();
+        rect(this.x, this.yB, this.width, this.heightB, this.yB); //drawing the image of the bottom obstacle
+        pop();
+
         this.death();
         this.x--; //removes the x from the obstacles which allows them to move forward
 
