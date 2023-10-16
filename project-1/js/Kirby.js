@@ -2,12 +2,12 @@
 class Kirby {
 
     constructor(kirbPhoto) {
-        this.x = 50
-        this.y = 400
-        this.size = 70
-        this.sizeK = 60 
-        this.floor = 750
-        this.alive = true
+        this.x = 50 //offical fixed x 
+        this.y = 400 //starting y that will change in the control function 
+        this.size = 60
+        this.sizeK = 50 
+        this.floor = 750 //the bounds the user cannot go out of on the bottom
+        this.alive = true //kirby automatically starts as alive 
         this.photo = kirbPhoto;
     }
 
@@ -19,9 +19,9 @@ class Kirby {
 
     control(){
 
-    
-        if (keyIsDown(32)||touches!=0) {
-            this.y -= 30  * (deltaTime / 50);
+        //how the user controls kirby 
+        if (keyIsDown(32)||touches!=0) { //if space is pressed down or if screen is touched for phones 
+            this.y -= 30  * (deltaTime / 50); 
         }
     
         if (this.y != this.floor && this.y < this.floor ) {
