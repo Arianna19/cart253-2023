@@ -11,7 +11,7 @@
 let imgbubble; //image of bubble
 let imgKirby; //image of kirby 
 let bubbleFrenzy = []; //creating an array (like a box holding multiple things with different positions for storage) starting from zero + go well with for loops
-let bubbleFrenzySize = 100; //we want to avoid hard coded numbers in the code itself + easily modifiable
+let bubbleFrenzySize = 150; //we want to avoid hard coded numbers in the code itself + easily modifiable
 
 
 
@@ -43,11 +43,12 @@ function createBubble(x, y) {
     let bubble = {
         x: x,
         y: y,
-        size: random(20,50), //have random sized to include more parameters as requested
+        size: random(20, 50), //have random sized to include more parameters as requested
         //sizeC: random(20,50),
         vx: 0,
         vy: 0,
-        speed: 1
+        speed: 1,
+        popped: false //a place to check when or if the bubble is popped
     };
     return bubble;
 }
@@ -61,8 +62,9 @@ function draw() {
     for (let i = 0; i < bubbleFrenzy.length; i++) { //length property knows how many things are in the array and is constantly up to date ALWAYS USE IT AFTER
         moveBubble(bubbleFrenzy[i]); //each time we call the  funtion we give it one of the objects and it moves 
         displayBubble(bubbleFrenzy[i]);
-        popBubble(bubbleFrenzy[i]);
-    }
+        //popBubble(bubbleFrenzy[i]);
+        checkBubble(bubbleFrenzy[i]);
+   }
 
 
     /*if (state === `simulation`) { //kirby chasing the bubbles
@@ -95,9 +97,24 @@ function moveBubble(bubble) {
 }
 
 function displayBubble(bubble) {
-    push();
-    image(imgbubble, bubble.x, bubble.y, bubble.size, bubble.size);
-    pop();
+    //push();
+    //image(imgbubble, bubble.x, bubble.y, bubble.size, bubble.size);
+    //pop();
+
+    if (!bubble.popped) {
+        push();
+        image(imgbubble, bubble.x, bubble.y, bubble.size, bubble.size);
+        pop();
+    }
+}
+
+function checkBubble(bubble) {
+    if (!bubble.popped) {
+        let d = dist(kirby.x, kirby.y, bubble.x, bubble.y);
+        if (d < kirby.size / 2 + kirby.size / 2) {
+            bubble.popped = true;
+        }
+    }
 }
 
 //how to be able to add in the array 
@@ -123,10 +140,10 @@ function mouseMoved() {
     kirby.y = mouseY - kirby.size / 2;
 }
 
-function popBubble(bubble) {
+/*function popBubble(bubble) {
     if (kirby.y > bubble.y && kirby.y < bubble.size + bubble.y) {
         if (kirby.x > bubble.x && kirby.x < bubble.size + bubble.x) {
-            bubbleFrenzy.splice(bubble);
+            bubbleFrenzy.pop(bubble);
             console.log("bubbbles");
         }
     }
@@ -136,11 +153,5 @@ function popBubble(bubble) {
 function mousePressed() {
     let bubble = createBubble(mouseX, mouseY);
     bubbleFrenzy.pop(bubble);
-}
-
-
-
-
-
-
+}*/
 
