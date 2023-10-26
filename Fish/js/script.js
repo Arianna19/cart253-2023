@@ -11,7 +11,7 @@
 let imgbubble; //image of bubble
 let imgKirby; //image of kirby 
 let bubbleFrenzy = []; //creating an array (like a box holding multiple things with different positions for storage) starting from zero + go well with for loops
-let bubbleFrenzySize = 5; //we want to avoid hard coded numbers in the code itself + easily modifiable
+let bubbleFrenzySize = 100; //we want to avoid hard coded numbers in the code itself + easily modifiable
 
 
 
@@ -43,8 +43,8 @@ function createBubble(x, y) {
     let bubble = {
         x: x,
         y: y,
-        size: 50,
-        sizeC: 50,
+        size: random(20,50), //have random sized to include more parameters as requested
+        //sizeC: random(20,50),
         vx: 0,
         vy: 0,
         speed: 1
@@ -59,9 +59,21 @@ function draw() {
     noCursor();
 
     for (let i = 0; i < bubbleFrenzy.length; i++) { //length property knows how many things are in the array and is constantly up to date ALWAYS USE IT AFTER
-        moveBubble(bubbleFrenzy[i]); //each time we call the movecookie funtion we give it one of the fish and it moves 
+        moveBubble(bubbleFrenzy[i]); //each time we call the  funtion we give it one of the objects and it moves 
         displayBubble(bubbleFrenzy[i]);
+        popBubble(bubbleFrenzy[i]);
     }
+
+
+    /*if (state === `simulation`) { //kirby chasing the bubbles
+        simulation();
+    }
+    else if (state === `popped all`) { //all bubbles are off screen/popped 
+        poppedAll();
+    }
+    else if (state === `no time`) { //kirby gets a cookie and is happy 
+        noTime();
+    }*/
 }
 
 function moveBubble(bubble) {
@@ -84,22 +96,22 @@ function moveBubble(bubble) {
 
 function displayBubble(bubble) {
     push();
-    image(imgbubble, bubble.x, bubble.y, bubble.size, bubble.sizeC);
+    image(imgbubble, bubble.x, bubble.y, bubble.size, bubble.size);
     pop();
 }
 
 //how to be able to add in the array 
-function mousePressed() {
+/*function mousePressed() {
     let bubble = createBubble(mouseX, mouseY);
-    bubbleFrenzy.push(bubble); //push function takes whatever thing in the () and puts it inside fishSchool array at the end of it
-}
+    bubbleFrenzy.splice(bubble); //push function takes whatever thing in the () and puts it inside fishSchool array at the end of it
+}*/
 
 //characteristics for kirby
 let kirby = {
     x: undefined,
     y: 250,
-    size: 60,
-    sizeK: 50,
+    size: 100,
+    sizeK: 80,
 }
 
 //how user moves kirby 
@@ -111,8 +123,24 @@ function mouseMoved() {
     kirby.y = mouseY - kirby.size / 2;
 }
 
-function popBubble() {
-    if (cookieKirby === kirby) {
-
+function popBubble(bubble) {
+    if (kirby.y > bubble.y && kirby.y < bubble.size + bubble.y) {
+        if (kirby.x > bubble.x && kirby.x < bubble.size + bubble.x) {
+            bubbleFrenzy.splice(bubble);
+            console.log("bubbbles");
+        }
     }
+
 }
+
+function mousePressed() {
+    let bubble = createBubble(mouseX, mouseY);
+    bubbleFrenzy.pop(bubble);
+}
+
+
+
+
+
+
+
