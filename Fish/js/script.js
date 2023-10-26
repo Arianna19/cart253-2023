@@ -18,8 +18,8 @@ let cookieJarSize = 5; //we want to avoid hard coded numbers in the code itself 
 
 function preload() {
 
-    imgCookie = loadImage('assets/images/cookie.png');
-    imgKirby = loadImage('assets/images/kirbyInhale.png');
+    imgCookie = loadImage('assets/images/bubble.png');
+    imgKirby = loadImage('assets/images/kirbyFish.webp');
 
 }
 
@@ -54,7 +54,7 @@ function createCookie(x, y) {
 
 //makes the cookies appear and move around
 function draw() {
-    background("pink");
+    background(10, 149, 191);
     mouseMoved();
     noCursor();
 
@@ -99,13 +99,13 @@ let kirby = {
     x: undefined,
     y: 250,
     size: 60,
-    sizeK: 60,
+    sizeK: 50,
 }
 
 //how user moves kirby 
 function mouseMoved() {
 
-    image(imgKirby, kirby.x, kirby.y, kirby.size, kirby.size); //loading kirby in canvas
+    image(imgKirby, kirby.x, kirby.y, kirby.size, kirby.sizeK); //loading kirby in canvas
 
     kirby.x = mouseX - kirby.size / 2; //user moves kirby with mouse
     kirby.y = mouseY - kirby.size / 2;
