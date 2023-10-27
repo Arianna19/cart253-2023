@@ -2,8 +2,7 @@
  * Age of Aquariums 
  * Arianna Sanchez Narita
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * User has to help kirby pop all the bubbles before the timer runs out
  */
 
 "use strict";
@@ -11,10 +10,11 @@
 let imgbubble; //image of bubble
 let imgKirby; //image of kirby 
 let bubbleFrenzy = []; //creating an array (like a box holding multiple things with different positions for storage) starting from zero + go well with for loops
-let bubbleFrenzySize = 250; //we want to avoid hard coded numbers in the code itself + easily modifiable
-
-
-
+let bubbleFrenzySize = 300; //we want to avoid hard coded numbers in the code itself + easily modifiable
+let state = 'simulation';
+let timer = 15;
+let i = 0;
+let bubblesPopped = 0;
 
 function preload() {
 
@@ -22,8 +22,6 @@ function preload() {
     imgKirby = loadImage('assets/images/kirbyFish.webp');
 
 }
-
-
 
 function setup() {
     createCanvas(600, 600);
@@ -36,6 +34,7 @@ function setup() {
 
         //fishSchool[i] = createFish(random(0, width), random(0, height)); //the numbers in square brakets are called indexes, values after equal sign are called elements
     }
+
 }
 
 //makes new javascript object giving the thing properties and returns the overall output 
@@ -60,15 +59,8 @@ function draw() {
     noCursor();
     timeCount();
     restart();
+    allGone();
 
-    for (let i = 0; i < bubbleFrenzy.length; i++) { //length property knows how many things are in the array and is constantly up to date ALWAYS USE IT AFTER
-        moveBubble(bubbleFrenzy[i]); //each time we call the  funtion we give it one of the objects and it moves 
-        displayBubble(bubbleFrenzy[i]);
-        //popBubble(bubbleFrenzy[i]);
-        checkBubble(bubbleFrenzy[i]);
-
-
-    }
 
     if (state === `simulation`) { //kirby chasing the bubbles
         simulation();
@@ -81,15 +73,12 @@ function draw() {
     }
 }
 
-let state = 'simulation';
-let timer = 5;
-
 //screen where user pops the bubbles
 function simulation() {
 
     push();
     textSize(45);
-    fill(232, 144, 44);
+    fill(250, 142, 0);
     textFont('Hevaltica');
     text('Help Kirby pop the bubbles ', 20, 40);
     pop();
@@ -98,36 +87,42 @@ function simulation() {
     textSize(25);
     fill(209, 40, 21);
     textFont('Hevaltica');
-    text('Time left: ' + timer, 20, 75);
+    text('Time left: ' + timer + ' secs', 20, 75);
     pop();
 
 
+    for (let i = 0; i < bubbleFrenzy.length; i++) { //length property knows how many things are in the array and is constantly up to date ALWAYS USE IT AFTER
+        moveBubble(bubbleFrenzy[i]); //each time we call the  funtion we give it one of the objects and it moves 
+        displayBubble(bubbleFrenzy[i]);
+        checkBubble(bubbleFrenzy[i]);
+    }
 }
 
 //screen that pops up when user pops all the bubbles
 function poppedAll() {
     push();
-    textSize(50);
+    textSize(32);
     fill('White');
     textFont('Hevaltica')
     textAlign(CENTER, CENTER);
-    text('You Cleared the Path for Kirby!!! (>‿◠)✌', width / 2, height / 2);
+    text('You Cleared the Path for Kirby!!! ᕙ(`▿´)ᕗ ', width / 2, height / 2);
     pop();
 
     push();
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('~click enter to restart~', width / 2, 450);
+    text('~click enter to restart~', width / 2, 350);
     pop();
 }
 
-
 function allGone() {
-    if (bubblePop == true) {
+    if (bubblesPopped == bubbleFrenzy.length) { //if the amount of bubbles popped is the same as the length of bubblefrenzy
         state = `popped all`;
-    }
+        bubblesPopped = 0;
+        timer = 60;
 
+    }
 }
 
 function timeCount() {
@@ -137,7 +132,7 @@ function timeCount() {
         timer--; //remove from the timer if this condition is met
     }
     if (timer == 0) {
-        state = `no time` //if there is no more time move to the no time state
+        state = `no time`; //if there is no more time move to the no time state
     }
 }
 
@@ -189,6 +184,7 @@ function checkBubble(bubble) {
         let d = dist(kirby.x, kirby.y, bubble.x, bubble.y); //creating a distance of when kirby and the bubbles interact
         if (d < kirby.size / 2) { //if the previous distance is smaller then kirby's initial size then the bubble is popped
             bubble.popped = true; //popped bubble so return it to being true and vanishing because it is popped so remove image or stop displaying image
+            bubblesPopped++;
         }
     }
 }
@@ -212,45 +208,21 @@ function mouseMoved() {
 
 function restart() {
 
-    //how the player starts
-    if (keyIsDown(32) && state === 'no Time') { //if space is down while on the start screen make the game go in the simulation state
-        state = 'simulation';
+    //how the player restarts
+    if (keyIsDown(13) && state === `no time`) { //if enter is down while on the start screen make the game go in the simulation state
+        state = `simulation`;
+        timer = 15; //reseting the timer so that the simulation starts again
+        for (let i = 0; i < bubbleFrenzy.length; i++) {
+            bubbleFrenzy[i].popped = false; //find at each bubble the ones that are true and make them false so they pop up again
+        }
+    }
 
+    if (keyIsDown(13) && state === `popped all`) {
+        state = `simulation`;
+        timer = 15; //reseting the timer so that the simulation starts again
+        for (let i = 0; i < bubbleFrenzy.length; i++) {
+            bubbleFrenzy[i].popped = false; //find at each bubble the ones that are true and make them false so they pop up again
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*function popBubble(bubble) {
-        if (kirby.y > bubble.y && kirby.y < bubble.size + bubble.y) {
-            if (kirby.x > bubble.x && kirby.x < bubble.size + bubble.x) {
-                bubbleFrenzy.pop(bubble);
-                console.log("bubbbles");
-            }
-        }
-    
-    }
-    
-
-
-    function mousePressed() {
-        let bubble = createBubble(mouseX, mouseY);
-        bubbleFrenzy.pop(bubble);
-    }
-
-    //how to be able to add in the array 
-    function mousePressed() {
-        let bubble = createBubble(mouseX, mouseY);
-        bubbleFrenzy.splice(bubble); //push function takes whatever thing in the () and puts it inside fishSchool array at the end of it
-    } */
 
