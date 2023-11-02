@@ -2,6 +2,10 @@
  * Jungle Garden
  * Arianna
  * 
+ * User uses kirby to water the flowers 
+ * 1. User control added is kirby 
+ * 2. New object + New class : peacful butterflies and making Kirby a class on its own
+ * 3. Two endings: Keeping the flowers alive for given time VS killing all the flowers 
  * 
  */
 
@@ -11,7 +15,7 @@ let imgKirby;
 let imgButterfly;
 let imgFlower;
 let state = `simulation`
-let timer = 15;
+let timer = 3;
 
 // Our garden
 let garden = {
@@ -64,9 +68,9 @@ function draw() {
     background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
     timeCount();
     restart();
-    
 
-    
+
+
     if (state === `simulation`) { //kirby watering the plants
         simulation();
     }
@@ -95,7 +99,7 @@ function simulation() {
     text('Time left to keep watering: ' + timer + ' secs', 20, 75);
     pop();
 
-    
+
     // Loop through all the flowers in the array and display them
     for (let i = 0; i < garden.flowers.length; i++) {
         let flower = garden.flowers[i];
@@ -113,7 +117,7 @@ function simulation() {
     kirb.draw();
 }
 
-function flowerAlive () {
+function flowerAlive() {
     //screen if user manages to keep some flowers alive for time given
     push();
     textSize(32);
@@ -181,16 +185,16 @@ function restart() {
     if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
         state = `simulation`;
         timer = 15; //reseting the timer so that the simulation starts again
-        for (let i = 0; i < garden.butterflys.length; i++) {
-            garden.butterflys[i].alive = true; //find at each bubble the ones that are true and make them false so they pop up again
-        }
+        //for (let i = 0; i < garden.butterflys.length; i++) {
+            //flower.alive = true; //find at each bubble the ones that are true and make them false so they pop up again
+        //}
     }
 
     if (keyIsDown(13) && state === `lost all flowers`) {
         state = `simulation`;
         timer = 15; //reseting the timer so that the simulation starts again
         for (let i = 0; i < garden.flowers.length; i++) {
-            garden.butterflys[i].alive = true; //find at each bubble the ones that are true and make them false so they pop up again
+            flower.alive = true; //find at each bubble the ones that are true and make them false so they pop up again
         }
     }
 }
