@@ -3,8 +3,8 @@ class Butterfly {
     constructor(butterflyImg) {
         this.x = random(0,540); //spawn the butterflies randomly on x axis
         this.y = random(0,540); //spawn the butterflies randomly on y axis
-        this.size = 45;
-        this.sizeB = 35;
+        this.size = 35;
+        this.sizeB = 25;
         this.photo = butterflyImg;
         this.vx = 0;
         this.vy = 0;

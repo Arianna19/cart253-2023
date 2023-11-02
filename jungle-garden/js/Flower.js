@@ -3,7 +3,7 @@ class Flower {
     constructor(newPhoto) {
         // Position and size information
         this.x = random(0, 500);
-        this.y = random(0,540);
+        this.y = random(90,500); //min different so that it doesnt go into the text
         this.size = 50;
         this.sizeF = 50;
         //this.stemLength = stemLength;
@@ -34,20 +34,7 @@ class Flower {
         this.shrink();
         this.mousePressed();   
         console.log("flower growing thing");
-        /*push();
-        // Set the stroke weight for the petals and the stem
-        strokeWeight(this.stemThickness);
-        // Draw a line for the stem
-        stroke(this.stemColor.r, this.stemColor.g, this.stemColor.b);
-        line(this.x, this.y, this.x, this.y + this.stemLength);
-        // Draw a circle with a heavy outline for the flower
-        strokeWeight(this.petalThickness);
-        fill(this.centreColor.r, this.centreColor.g, this.centreColor.b);
-        stroke(this.petalColor.r, this.petalColor.g, this.petalColor.b);
-        ellipse(this.x, this.y, this.size);
-        pop();
-        */
-
+    
         this.x = constrain(this.x, 0, 500); //to keep the flowers on screen so that user can water them
         this.y = constrain(this.y, 0, 500);
     }
@@ -56,8 +43,8 @@ class Flower {
         //random number to shrink by
         let shrinkage = random(0, 0.1);
         // make the petals smaller 
-        this.size = this.size - shrinkage; //making the flower shrink ovretime (width size)
-        this.sizeF = this.sizeF - shrinkage; //making the flower shrink overtime (length size) 
+        this.size = this.size - shrinkage/2; //making the flower shrink ovretime (width size)
+        this.sizeF = this.sizeF - shrinkage/2; //making the flower shrink overtime (length size) 
         // make the center also shrink
         //this.size = this.size - shrinkage;
 
