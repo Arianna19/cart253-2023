@@ -32,8 +32,6 @@ class Flower {
         // make the petals smaller 
         this.size = this.size - shrinkage / 2; //making the flower shrink ovretime (width size)
         this.sizeF = this.sizeF - shrinkage / 2; //making the flower shrink overtime (length size) 
-        // make the center also shrink
-        //this.size = this.size - shrinkage;
 
         // If any of the key properties reach 0 or less, the flower is dead
         if (this.size <= 0 && this.sizeF) //if both the width and the length of the image are zero than dead

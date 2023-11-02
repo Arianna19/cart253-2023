@@ -67,6 +67,7 @@ function draw() {
     // Display the grass
     background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
     timeCount();
+    noFlowers();
     restart();
 
 
@@ -180,7 +181,9 @@ function timeCount() {
 }
 
 function noFlowers() {
-  
+    if (garden.numFlowers == 0 && timer > 0) {
+        state = `lost all flowers`;
+    }
 }
 
 function restart() {
