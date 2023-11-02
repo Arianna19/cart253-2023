@@ -9,6 +9,7 @@
 
 let imgKirby;
 let imgButterfly;
+let imgFlower;
 
 // Our garden
 let garden = {
@@ -30,7 +31,8 @@ let garden = {
 
 function preload() {
     imgKirby = loadImage('assets/images/waterKirby.webp'); //kirby's image
-    imgButterfly = loadImage('assets/images/butterflypicture.png');
+    imgButterfly = loadImage('assets/images/cutebutterfly.webp'); //butterfly image
+    imgFlower = loadImage('assets/images/blueFlower.webp'); //flower image
 }
 
 // setup() creates the canvas and the flowers in the garden
@@ -50,15 +52,16 @@ function setup() {
             b: random(100, 255)
         }
         // Create a new flower using the arguments
-        let flower = new Flower(x, y, size, stemLength, petalColor);
+        let flower = new Flower(imgFlower);
+        flower.display();
         // Add the flower to the array of flowers
         garden.flowers.push(flower);
     }
     for (let i = 0; i < garden.numButters; i++) {
         // Create a new butterfly using the arguments
-        let butter = new Butterfly(imgButterfly);
+        let butterF = new Butterfly(imgButterfly);
         // Add the butterfly to the array of butterflys
-        garden.butterflys.push(butter);
+        garden.butterflys.push(butterF);
     }
 }
 

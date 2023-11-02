@@ -14,7 +14,7 @@ class Butterfly {
 
     draw() {
         image(imgButterfly, this.x, this.y, this.size, this.sizeB); //load the butterfly image
-        console.log("butterfly");
+        //console.log("butterfly");
 
     }
 
