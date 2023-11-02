@@ -21,11 +21,11 @@ let garden = {
     //An array for the faster shrinking flowers (red ones)
     fastFlowers: [],
     //the amount that should appear, a little less than the blue ones
-    numFastFlowers: 3,
+    numFastFlowers: 2,
     // An array to store the individual flowers
     flowers: [],
     // How many flowers in the garden
-    numFlowers: 5,
+    numFlowers: 3,
     // Array for the amoung of butterflies
     butterflys: [],
     //amount of butterflies that will pop up 
@@ -118,7 +118,7 @@ function simulation() {
             flower.display();
         }
     }
-
+    //loop through all the red fast flowers in the array and display them
     for (let i = 0; i < garden.fastFlowers.length; i++) {
         let flowerTwo = garden.fastFlowers[i];
         if (flowerTwo.alive) {
@@ -126,12 +126,13 @@ function simulation() {
             flowerTwo.display();
         }
     }
-
+    //loop through all the cute butterflies in the array and display and move them
     for (let i = 0; i < garden.butterflys.length; i++) {
         let butter = garden.butterflys[i];
         butter.move();
         butter.draw();
     }
+    //diplay the kirby and make it move with the mouse
     let kirb = new Kirby(imgKirby);
     kirb.draw();
 }
@@ -160,6 +161,14 @@ function flowerAlive() {
     textAlign(CENTER, CENTER);
     text('~click enter to restart~', width / 2, 400);
     pop();
+
+    if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
+        state = `simulation`;
+        timer = 15;
+        for (let i = 0; i < garden.flowers.length; i++) {
+            
+        }
+    }
 }
 
 function lostAllFlowers() {
@@ -184,6 +193,7 @@ function lostAllFlowers() {
     textAlign(CENTER, CENTER);
     text('~click enter to start again~', width / 2, 400);
     pop();
+
 }
 
 function timeCount() {
@@ -197,20 +207,7 @@ function timeCount() {
     }
 }
 
-function noFlowers() {
-    if (garden.numFlowers == 0 && timer > 0) {
-        state = `lost all flowers`;
-    }
-}
-
 function restart() {
-
-    //how the player restarts
-    if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
-        state = `simulation`;
-        garden.flowers.shift();
-        timer = 15; 
-    }
 
     if (keyIsDown(13) && state === `lost all flowers`) {
         state = `simulation`;

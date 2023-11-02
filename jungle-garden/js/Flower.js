@@ -8,7 +8,9 @@ class Flower {
         this.sizeF = 60;
         this.photo = newPhoto;
         this.alive = true;
+        
     }
+    
 
     // display()
     // Displays the flower
@@ -17,7 +19,8 @@ class Flower {
         image(imgFlower, this.x, this.y, this.size, this.sizeF);
         this.shrink();
         this.mousePressed();
-        console.log("flower growing thing");
+        this.deadFlower();
+      
 
         this.x = constrain(this.x, 0, 500); //to keep the flowers on screen so that user can water them
         this.y = constrain(this.y, 0, 500);
@@ -46,6 +49,15 @@ class Flower {
             this.size = this.size + 0.5;
             this.sizeF = this.sizeF + 0.5;
         }
+    }
+
+    deadFlower() {
+        if (this.alive === false) {
+            this.size = 0;
+            this.sizeF = 0;
+            console.log("dead flowers");
+        }
+        
     }
 }
 
