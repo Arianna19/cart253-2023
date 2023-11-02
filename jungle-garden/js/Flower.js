@@ -62,27 +62,20 @@ class Flower {
         //this.size = this.size - shrinkage;
 
         // If any of the key properties reach 0 or less, the flower is dead
-        if (this.photo <= 0)// || this.size <= 0) {
+        if (this.size <= 0 && this.sizeF) //if both the width and the length of the image are zero than dead
             this.alive = false;
         }
 
 
 
     mousePressed() {
+        //if the mouse if hovered over the flowers it grows them
         // Calculate the distance between this flower and the mouse
-        let d = dist(this.size, this.sizeF, mouseX, mouseY);
-        // Check if the distance is less than the head of the flower
+        let d = dist(this.x, this.y, mouseX, mouseY);
         if (d < this.size / 2 + this.sizeF) {
-            // If it is, this flower was clicked, so increase its stem length
-            this.photo = this.photo + 5;
-            // And also change its y position so it grows upward! (If we didn't do this
-            // the then stem would grow downward, which would look weird.)
-            this.y = this.y - 5;
-            //making the petals grow also
-            this.photo = this.photo + 0.5;
-            //making the center grow upon mouse click
-            this.size = this.size + 1;
-
+            this.size = this.size + 0.5; 
+            this.sizeF = this.sizeF + 0.5;
+        
         }
     }
 }
