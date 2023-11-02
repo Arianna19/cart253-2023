@@ -14,9 +14,14 @@
 let imgKirby;
 let imgButterfly;
 let imgFlower;
+let imgFlowerRed;
 let state = `simulation`
 let timer = 3;
 let garden = {
+    //An array for the faster shrinking flowers (red ones)
+    fastFlowers: [],
+    //the amount that should appear, a little less than the blue ones
+    numFastFlowers: 3,
     // An array to store the individual flowers
     flowers: [],
     // How many flowers in the garden
@@ -37,6 +42,7 @@ function preload() {
     imgKirby = loadImage('assets/images/waterKirby.webp'); //kirby's image
     imgButterfly = loadImage('assets/images/cutebutterfly.webp'); //butterfly image
     imgFlower = loadImage('assets/images/blueFlower.webp'); //flower image
+    imgFlowerRed = loadImage('assets/images/redFlower.webp');
 }
 
 // setup() creates the canvas and the flowers in the garden
@@ -51,6 +57,16 @@ function setup() {
         // Add the flower to the array of flowers
         garden.flowers.push(flower);
     }
+
+    for (let i = 0; i < garden.numFastFlowers; i++) {
+        // Create a new flower using the arguments
+        let flowerTwo = new FlowerRed(imgFlowerRed);
+        flowerTwo.display();
+        // Add the flower to the array of flowers
+        garden.fastFlowers.push(flowerTwo);
+        console.log("reddd");
+    }
+
     for (let i = 0; i < garden.numButters; i++) {
         // Create a new butterfly using the arguments
         let butterF = new Butterfly(imgButterfly);
@@ -100,6 +116,14 @@ function simulation() {
         if (flower.alive) {
             flower.shrink();
             flower.display();
+        }
+    }
+
+    for (let i = 0; i < garden.fastFlowers.length; i++) {
+        let flowerTwo = garden.fastFlowers[i];
+        if (flowerTwo.alive) {
+            flowerTwo.shrink();
+            flowerTwo.display();
         }
     }
 
@@ -184,6 +208,7 @@ function restart() {
     //how the player restarts
     if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
         state = `simulation`;
+        garden.flowers.shift();
         timer = 15; 
     }
 
