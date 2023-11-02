@@ -64,7 +64,6 @@ function setup() {
         flowerTwo.display();
         // Add the flower to the array of flowers
         garden.fastFlowers.push(flowerTwo);
-        console.log("reddd");
     }
 
     for (let i = 0; i < garden.numButters; i++) {
@@ -80,7 +79,6 @@ function draw() {
     // Display the grass
     background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
     timeCount();
-    noFlowers();
     restart();
 
     if (state === `simulation`) { //kirby watering the plants
@@ -93,6 +91,8 @@ function draw() {
         lostAllFlowers();
     }
 }
+
+let amountDeadFlowers = 0;
 
 function simulation() {
     //simulation of watering the flowers
@@ -123,6 +123,7 @@ function simulation() {
         let flowerTwo = garden.fastFlowers[i];
         if (flowerTwo.alive) {
             flowerTwo.shrink();
+            amountDeadFlowers++;
             flowerTwo.display();
         }
     }
