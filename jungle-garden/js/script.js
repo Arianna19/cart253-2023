@@ -10,7 +10,7 @@
 let imgKirby;
 let imgButterfly;
 let imgFlower;
-let state = `flower alive`
+let state = `simulation`
 let timer = 15;
 
 // Our garden
@@ -62,6 +62,8 @@ function setup() {
 function draw() {
     // Display the grass
     background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
+    timeCount();
+    restart();
     
 
     
@@ -160,4 +162,35 @@ function lostAllFlowers() {
     textAlign(CENTER, CENTER);
     text('~click enter to start again~', width / 2, 400);
     pop();
+}
+
+function timeCount() {
+    //timer
+    //frameCount keeps track the amount of times prog has gone through this statement
+    if (frameCount % 60 == 0 && timer > 0) { //a minute has gone by if the number if dividable by 60
+        timer--; //remove from the timer if this condition is met
+    }
+    if (timer == 0) {
+        state = `flower alive`; //if there is no more time move to the no time state
+    }
+}
+
+function restart() {
+
+    //how the player restarts
+    if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
+        state = `simulation`;
+        timer = 15; //reseting the timer so that the simulation starts again
+        for (let i = 0; i < garden.butterflys.length; i++) {
+            garden.butterflys[i].alive = true; //find at each bubble the ones that are true and make them false so they pop up again
+        }
+    }
+
+    if (keyIsDown(13) && state === `lost all flowers`) {
+        state = `simulation`;
+        timer = 15; //reseting the timer so that the simulation starts again
+        for (let i = 0; i < garden.flowers.length; i++) {
+            garden.butterflys[i].alive = true; //find at each bubble the ones that are true and make them false so they pop up again
+        }
+    }
 }

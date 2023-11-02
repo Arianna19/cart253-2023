@@ -4,8 +4,8 @@ class Flower {
         // Position and size information
         this.x = random(0, 500);
         this.y = random(90,500); //min different so that it doesnt go into the text
-        this.size = 50;
-        this.sizeF = 50;
+        this.size = 60;
+        this.sizeF = 60;
         //this.stemLength = stemLength;
         //this.stemThickness = 10;
         //this.petalThickness = 10;
@@ -37,6 +37,9 @@ class Flower {
     
         this.x = constrain(this.x, 0, 500); //to keep the flowers on screen so that user can water them
         this.y = constrain(this.y, 0, 500);
+
+        this.size = constrain(this.size, 0, 60); //constrain the size of the flowers
+        this.sizeF = constrain(this.sizeF, 0, 60)
     }
 
     shrink() {
