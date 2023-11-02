@@ -28,10 +28,10 @@ class FlowerRed {
 
     shrink() {
         //random number to shrink by
-        let shrinkage = random(0, 1);
+        let shrinkage = random(0, 0.3);
         // make the petals smaller 
-        this.size = this.size - shrinkage; //making the flower shrink ovretime (width size)
-        this.sizeF = this.sizeF - shrinkage; //making the flower shrink overtime (length size) 
+        this.size = this.size - shrinkage/2; //making the flower shrink ovretime (width size)
+        this.sizeF = this.sizeF - shrinkage/2; //making the flower shrink overtime (length size) 
 
         // If any of the key properties reach 0 or less, the flower is dead
         if (this.size <= 0 && this.sizeF) //if both the width and the length of the image are zero than dead
