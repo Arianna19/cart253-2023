@@ -10,6 +10,7 @@ class Kirby {
     draw() {
         this.mouseMoved();
         image(imgKirby, this.x, this.y, this.size, this.sizeK);
+        noCursor();
         //console.log("Kirby moving");
 
     }

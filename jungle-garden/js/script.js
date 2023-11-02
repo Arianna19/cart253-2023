@@ -29,9 +29,9 @@ let garden = {
     numButters: 10,
     // The color of the grass (background)
     grassColor: {
-        r: 120,
-        g: 180,
-        b: 120
+        r: 86,
+        g: 166,
+        b: 51
     }
 };
 
@@ -115,6 +115,7 @@ function simulation() {
     }
     let kirb = new Kirby(imgKirby);
     kirb.draw();
+
 }
 
 function flowerAlive() {
@@ -141,7 +142,6 @@ function flowerAlive() {
     textAlign(CENTER, CENTER);
     text('~click enter to restart~', width / 2, 400);
     pop();
-
 }
 
 function lostAllFlowers() {
@@ -179,22 +179,25 @@ function timeCount() {
     }
 }
 
+function noFlowers() {
+  
+}
+
 function restart() {
 
     //how the player restarts
     if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
         state = `simulation`;
-        timer = 15; //reseting the timer so that the simulation starts again
-        //for (let i = 0; i < garden.butterflys.length; i++) {
-            //flower.alive = true; //find at each bubble the ones that are true and make them false so they pop up again
-        //}
+        timer = 15; 
+        
     }
 
     if (keyIsDown(13) && state === `lost all flowers`) {
         state = `simulation`;
         timer = 15; //reseting the timer so that the simulation starts again
         for (let i = 0; i < garden.flowers.length; i++) {
-            flower.alive = true; //find at each bubble the ones that are true and make them false so they pop up again
+            flower.alive = true; 
         }
     }
-}
+} 
+
