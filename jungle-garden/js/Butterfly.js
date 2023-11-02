@@ -15,10 +15,8 @@ class Butterfly {
     draw() {
         image(imgButterfly, this.x, this.y, this.size, this.sizeB); //load the butterfly image
         //console.log("butterfly");
-
     }
-
-
+    
     move() {
         // First check if we should change direction
         let r = random(0, 1);

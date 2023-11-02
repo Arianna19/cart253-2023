@@ -16,8 +16,6 @@ let imgButterfly;
 let imgFlower;
 let state = `simulation`
 let timer = 3;
-
-// Our garden
 let garden = {
     // An array to store the individual flowers
     flowers: [],
@@ -61,7 +59,6 @@ function setup() {
     }
 }
 
-
 // Displays our flowers
 function draw() {
     // Display the grass
@@ -69,8 +66,6 @@ function draw() {
     timeCount();
     noFlowers();
     restart();
-
-
 
     if (state === `simulation`) { //kirby watering the plants
         simulation();
@@ -81,7 +76,6 @@ function draw() {
     else if (state === `lost all flowers`) { //user lost all the flowers on the screen
         lostAllFlowers();
     }
-
 }
 
 function simulation() {
@@ -100,7 +94,6 @@ function simulation() {
     text('Time left to keep watering: ' + timer + ' secs', 20, 75);
     pop();
 
-
     // Loop through all the flowers in the array and display them
     for (let i = 0; i < garden.flowers.length; i++) {
         let flower = garden.flowers[i];
@@ -109,6 +102,7 @@ function simulation() {
             flower.display();
         }
     }
+
     for (let i = 0; i < garden.butterflys.length; i++) {
         let butter = garden.butterflys[i];
         butter.move();
@@ -116,7 +110,6 @@ function simulation() {
     }
     let kirb = new Kirby(imgKirby);
     kirb.draw();
-
 }
 
 function flowerAlive() {
@@ -192,7 +185,6 @@ function restart() {
     if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
         state = `simulation`;
         timer = 15; 
-        
     }
 
     if (keyIsDown(13) && state === `lost all flowers`) {

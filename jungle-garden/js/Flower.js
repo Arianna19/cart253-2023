@@ -1,5 +1,5 @@
 class Flower {
-    // The constructor() sets up a flower's properties
+    
     constructor(newPhoto) {
         // Position and size information
         this.x = random(0, 500);
@@ -36,10 +36,7 @@ class Flower {
         // If any of the key properties reach 0 or less, the flower is dead
         if (this.size <= 0 && this.sizeF) //if both the width and the length of the image are zero than dead
             this.alive = false;
-
     }
-
-
 
     mousePressed() {
         //if the mouse if hovered over the flowers it grows them
@@ -48,7 +45,6 @@ class Flower {
         if (d < this.size / 2 + this.sizeF) {
             this.size = this.size + 0.5;
             this.sizeF = this.sizeF + 0.5;
-
         }
     }
 }

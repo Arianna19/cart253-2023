@@ -1,4 +1,5 @@
 class Kirby {
+    
     constructor(kirbPhoto) {
         this.x = 50; //offical fixed x 
         this.y = 250; //starting y that will change in the control function 
