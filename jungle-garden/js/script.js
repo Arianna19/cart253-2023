@@ -16,7 +16,7 @@ let imgButterfly;
 let imgFlower;
 let imgFlowerRed;
 let state = `simulation`
-let timer = 3;
+let timer = 15;
 let garden = {
     //An array for the faster shrinking flowers (red ones)
     fastFlowers: [],
@@ -80,6 +80,7 @@ function draw() {
     background(garden.grassColor.r, garden.grassColor.g, garden.grassColor.b);
     timeCount();
     restart();
+    gameLost();
 
     if (state === `simulation`) { //kirby watering the plants
         simulation();
@@ -97,10 +98,10 @@ let amountDeadFlowers = 0;
 function simulation() {
     //simulation of watering the flowers
     push();
-    textSize(30);
+    textSize(25);
     fill('white');
     textFont('Hevaltica');
-    text('Help Kirby water the flowers alive!!! ', 20, 40);
+    text('Help Kirby water the flowers and keep them alive!!! ', 20, 40);
     pop();
 
     push();
@@ -163,13 +164,6 @@ function flowerAlive() {
     text('~click enter to restart~', width / 2, 400);
     pop();
 
-    if (keyIsDown(13) && state === `flower alive`) { //if enter is down while on the start screen make the game go in the simulation state
-        state = `simulation`;
-        timer = 15;
-        for (let i = 0; i < garden.flowers.length; i++) {
-            
-        }
-    }
 }
 
 function lostAllFlowers() {
@@ -177,7 +171,7 @@ function lostAllFlowers() {
     textSize(50);
     fill('White');
     textFont('Hevaltica')
-    text('You Killed All the Flowers', 30, height / 2);
+    text('You Killed the Flowers', 55, height / 2);
     pop();
 
     push();
@@ -197,6 +191,22 @@ function lostAllFlowers() {
 
 }
 
+//function that checks if the flowers are alive or not (false or true)
+function gameLost() {
+
+    garden.fastFlowers.forEach(verifyDeath); //only interact with this array and nothing else
+    garden.flowers.forEach(verifyDeath);
+
+    function verifyDeath(flower){
+
+        if (flower.alive == false) {
+            state = `lost all flowers`;
+        }
+    }
+}
+
+
+
 function timeCount() {
     //timer
     //frameCount keeps track the amount of times prog has gone through this statement
@@ -210,11 +220,26 @@ function timeCount() {
 
 function restart() {
 
-    if (keyIsDown(13) && state === `lost all flowers`) {
+    if (keyIsDown(13) && (state === `flower alive` || state === `lost all flowers`)) {
         state = `simulation`;
         timer = 15; //reseting the timer so that the simulation starts again
-        for (let i = 0; i < garden.flowers.length; i++) {
-            flower.alive = true; 
+        garden.fastFlowers.splice(0, garden.fastFlowers.length); //empty array for the red flowers to start again 
+        garden.flowers.splice(0, garden.flowers.length); //empty array for the blue flowers 
+
+        for (let i = 0; i < garden.numFlowers; i++) {
+            // Create a new flower using the arguments
+            let flower = new Flower(imgFlower);
+            flower.display();
+            // Add the flower to the array of flowers
+            garden.flowers.push(flower);
+        }
+
+        for (let i = 0; i < garden.numFastFlowers; i++) {
+            // Create a new flower using the arguments
+            let flowerTwo = new FlowerRed(imgFlowerRed);
+            flowerTwo.display();
+            // Add the flower to the array of flowers
+            garden.fastFlowers.push(flowerTwo);
         }
     }
 } 

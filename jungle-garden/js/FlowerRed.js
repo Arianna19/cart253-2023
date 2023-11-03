@@ -4,8 +4,8 @@ class FlowerRed {
         // Position and size information
         this.x = random(0, 500);
         this.y = random(90, 500); //min different so that it doesnt go into the text
-        this.size = 60;
-        this.sizeF = 60;
+        this.size = 70;
+        this.sizeF = 70;
         this.photo = newPhoto;
         this.alive = true;
     }
