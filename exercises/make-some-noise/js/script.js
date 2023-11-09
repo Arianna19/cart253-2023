@@ -49,8 +49,5 @@ function draw() {
         ball.move();
         ball.bounce();
         ball.display();
-
     }
-
-
 }
