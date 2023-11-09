@@ -1,5 +1,7 @@
 class Ball {
 
+    l
+
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -32,10 +34,6 @@ class Ball {
 
         this.x = this.x + this.vx;
         this.y = this.y + this.vy;
-
-        //if (this.y - this.size / 2 > height) {
-         //   this.active = false;
-        //}
     }
 
     gravity(force) {
@@ -48,5 +46,13 @@ class Ball {
             this.ay = 0;
         }
     }
+
+    soundBounce() {
+        if (this.y + this.size/2 >= height) {
+            this.vy = -this.vy;
+            this.ay = 0;
+        }
+    }
+
 }
 
