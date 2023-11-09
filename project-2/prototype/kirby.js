@@ -2,18 +2,22 @@ class kirby {
 
   x = 30;
   y = 30;
-  size = 50
-  xPos = 100
-  moveRight = true
-  moveLeft = true
-  floor = 375
+  size = 50;
+  xPos = 100;
+  moveRight = true;
+  moveLeft = true;
+  floor = 500;
 
 
   constructor() {
   }
 
   draw() {
+    push();
+    fill(252, 131, 248);
+    noStroke();
     circle(this.xPos, this.y, this.size)
+    pop(); 
     this.move()
     translate(this.x, 0)
   }
