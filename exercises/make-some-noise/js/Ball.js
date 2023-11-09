@@ -1,7 +1,5 @@
 class Ball {
 
-    l
-
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -44,15 +42,13 @@ class Ball {
         if (this.y + this.size/2 >= height) {
             this.vy = -this.vy;
             this.ay = 0;
+            console.log("play music")
+            bounceSound.rate(this.x/width);
+            bounceSound.play();
         }
     }
 
-    soundBounce() {
-        if (this.y + this.size/2 >= height) {
-            this.vy = -this.vy;
-            this.ay = 0;
-        }
-    }
+
 
 }
 

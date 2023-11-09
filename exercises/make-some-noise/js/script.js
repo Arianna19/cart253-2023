@@ -10,14 +10,17 @@
 "use strict";
 
 let gravityForce = 0.0025;
+let bounceSound;
 
 //array for the balls spawning
 let balls = [];
 //amount of balls to show in the array
-let numBalls = 3;
+let numBalls = 2;
 
 
 function preload() {
+
+    bounceSound = loadSound(`assets/sounds/bloop_x.wav`);
 
 }
 
