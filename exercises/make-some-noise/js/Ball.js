@@ -5,7 +5,7 @@ class Ball {
         this.y = y;
         this.vx = 0;
         this.vy = 0;
-        this.ax = 0;
+        this.ax = 0; //acceleration
         this.ay = 0;
         this.maxSpeed = 10;
         this.size = 40;
@@ -55,7 +55,7 @@ class Ball {
     }
 
     touching() {
-        
+
         if (this.touch === true && this.y + this.size / 2 >= height) {
             console.log("touching");
             push();
@@ -64,6 +64,7 @@ class Ball {
             ellipse(this.x, this.y, this.size); //making it another colour when it bounces just for fun
             pop();
             this.touch = false; 
+
         }
     }
 }

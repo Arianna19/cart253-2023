@@ -52,7 +52,12 @@ function draw() {
         ball.bounce();
         ball.display();
         ball.touching();
+
+        if(ball.touch === false) {
+            console.log("idk");
+        }
     }
+
     
 }
 
