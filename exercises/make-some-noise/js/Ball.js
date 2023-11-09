@@ -11,6 +11,7 @@ class Ball {
         this.size = 40;
         this.active = true;
         this.sound = bSound;
+        this.touch = true;
 
     }
 
@@ -53,8 +54,9 @@ class Ball {
     }
 
     touching() {
-        if (this.ay == 0 || this.ax == 500) {
+        if (this.touch === true || (this.ay == 0 || this.ax == 500)) {
             console.log("touching");
+            this.touch = false; 
         }
     }
 }

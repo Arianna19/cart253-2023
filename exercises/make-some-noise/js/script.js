@@ -30,7 +30,7 @@ function preload() {
 
 function setup() {
 
-    createCanvas(550, 550);
+    createCanvas(550, 600);
 
     for (let i = 0; i < numBalls; i++) {
         let x = random(0, width);
@@ -43,6 +43,7 @@ function setup() {
 
 function draw() {
 
+    newBall();
     background(219, 191, 90);
 
     for (let i = 0; i < balls.length; i++) {
@@ -51,8 +52,16 @@ function draw() {
         ball.move();
         ball.bounce();
         ball.display();
+        ball.touching();
 
 
     }
 
+}
+
+function newBall() {
+    
+    if (ball.touch = false) {
+        console.log("idk ball false now")
+    }
 }
