@@ -1,6 +1,6 @@
 class Ball {
 
-    constructor(x, y) {
+    constructor(x, y, bSound) {
         this.x = x;
         this.y = y;
         this.vx = 0;
@@ -10,6 +10,7 @@ class Ball {
         this.maxSpeed = 10;
         this.size = 40;
         this.active = true;
+        this.sound = bSound;
 
     }
 
@@ -46,8 +47,8 @@ class Ball {
             this.vy = -this.vy;
             this.ay = 0;
             console.log("play music")
-            bounceSound.rate(randomRate); //making a random pitch from the rates when the ball bounces
-            bounceSound.play();
+            this.sound.rate(randomRate); //making a random pitch from the rates when the ball bounces
+            this.sound.play();
         }
     }
 }
