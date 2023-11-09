@@ -50,12 +50,19 @@ class Ball {
             console.log("play music")
             this.sound.rate(randomRate); //making a random pitch from the rates when the ball bounces
             this.sound.play();
+            
         }
     }
 
     touching() {
-        if (this.touch === true || (this.ay == 0 || this.ax == 500)) {
+        
+        if (this.touch === true && this.y + this.size / 2 >= height) {
             console.log("touching");
+            push();
+            noStroke();
+            fill("blue")
+            ellipse(this.x, this.y, this.size); //making it another colour when it bounces just for fun
+            pop();
             this.touch = false; 
         }
     }
