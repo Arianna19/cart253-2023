@@ -17,7 +17,7 @@ let rates = [1, 2, 3, 4, 5];
 //array for the balls spawning
 let balls = [];
 //amount of balls to show in the array
-let numBalls = 2;
+let numBalls = 4;
 
 
 function preload() {
