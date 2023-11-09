@@ -3,8 +3,10 @@
  * 
  *  Arianna Narita
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * Basically just a program with balls bouncing around but that each have different 
+ * pitches and each time the ball bounces a new ones spawns
+ * Main objective was just to learn how to play around with sound a bit since 
+ * it was my first time using it. 
  */
 
 "use strict";
@@ -28,7 +30,7 @@ function preload() {
 
 function setup() {
 
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(550, 550);
 
     for (let i = 0; i < numBalls; i++) {
         let x = random(0, width);
@@ -49,5 +51,8 @@ function draw() {
         ball.move();
         ball.bounce();
         ball.display();
+
+
     }
+
 }

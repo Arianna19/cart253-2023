@@ -51,5 +51,11 @@ class Ball {
             this.sound.play();
         }
     }
+
+    touching() {
+        if (this.ay == 0 || this.ax == 500) {
+            console.log("touching");
+        }
+    }
 }
 
