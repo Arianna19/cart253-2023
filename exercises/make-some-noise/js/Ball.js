@@ -42,7 +42,7 @@ class Ball {
 
         let randomRate = random(rates);
 
-        if (this.y + this.size/2 >= height) {
+        if (this.y + this.size / 2 >= height) {
             this.vy = -this.vy;
             this.ay = 0;
             console.log("play music")
@@ -50,8 +50,5 @@ class Ball {
             bounceSound.play();
         }
     }
-
-
-
 }
 

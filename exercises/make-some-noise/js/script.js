@@ -13,7 +13,7 @@ let gravityForce = 0.0025;
 
 let bounceSound;
 //pitch that varies for the bounce sound
-let rates = [1,2,3,4,5];
+let rates = [1, 2, 3, 4, 5];
 
 //array for the balls spawning
 let balls = [];
@@ -46,10 +46,10 @@ function draw() {
 
     for (let i = 0; i < balls.length; i++) {
         let ball = balls[i];
-            ball.gravity(gravityForce);
-            ball.move();
-            ball.bounce();
-            ball.display();
+        ball.gravity(gravityForce);
+        ball.move();
+        ball.bounce();
+        ball.display();
 
     }
 
