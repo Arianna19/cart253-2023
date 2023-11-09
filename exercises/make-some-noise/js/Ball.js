@@ -39,11 +39,14 @@ class Ball {
     }
 
     bounce() {
+
+        let randomRate = random(rates);
+
         if (this.y + this.size/2 >= height) {
             this.vy = -this.vy;
             this.ay = 0;
             console.log("play music")
-            bounceSound.rate(this.x/width);
+            bounceSound.rate(randomRate); //making a random pitch from the rates when the ball bounces
             bounceSound.play();
         }
     }

@@ -2,7 +2,7 @@
  * Make Some Noise exercise
  * 
  *  Arianna Narita
- * 
+ * 1.5,1.75,2.75,2.5,2.75,3
  * This is a template. You must fill in the title, author, 
  * and this description to match your project!
  */
@@ -10,12 +10,15 @@
 "use strict";
 
 let gravityForce = 0.0025;
+
 let bounceSound;
+//pitch that varies for the bounce sound
+let rates = [1,2,3,4,5];
 
 //array for the balls spawning
 let balls = [];
 //amount of balls to show in the array
-let numBalls = 2;
+let numBalls = 1;
 
 
 function preload() {
