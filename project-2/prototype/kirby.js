@@ -6,7 +6,8 @@ class kirby {
   xPos = 100;
   moveRight = true;
   moveLeft = true;
-  floor = 500;
+  floor = 375;
+  ground = 375
 
 
   constructor() {
@@ -17,7 +18,7 @@ class kirby {
     fill(252, 131, 248);
     noStroke();
     circle(this.xPos, this.y, this.size)
-    pop(); 
+    pop();
     this.move()
     translate(this.x, 0)
   }
@@ -31,8 +32,9 @@ class kirby {
       this.x -= 5;
     }
 
-    if (this.y <= this.floor) {
+    if (this.y <= this.floor - 5) {
       this.y += 5;
+    } else {
     }
 
     if (keyIsDown(32)) {
