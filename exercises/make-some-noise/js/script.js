@@ -7,6 +7,8 @@
  * pitches and each time the ball bounces a new ones spawns
  * Main objective was just to learn how to play around with sound a bit since 
  * it was my first time using it. 
+ * 
+ * Basically ear cancer
  */
 
 "use strict";
@@ -15,16 +17,18 @@ let gravityForce = 0.0025;
 
 let bounceSound;
 //pitch that varies for the bounce sound
-let rates = [1, 2, 3, 4, 5];
+let rates = [2, 3, 4, 5];
 //array for the balls spawning
 let balls = [];
 //amount of balls to show in the array
-let numBalls = 4;
+let numBalls = 1;
 
 
 function preload() {
 
-    bounceSound = loadSound(`assets/sounds/bloop_x.wav`);
+    //bounceSound = loadSound(`assets/sounds/bloop_x.wav`);
+    bounceSound = loadSound(`assets/sounds/doSound.mp3`);
+
 
 }
 
@@ -32,13 +36,10 @@ function setup() {
 
     createCanvas(550, 600);
 
-    for (let i = 0; i < numBalls; i++) {
         let x = random(0, width);
         let y = random(-400, -100);
         let ball = new Ball(x, y, bounceSound);
         balls.push(ball);
-    }
-
 }
 
 function draw() {
@@ -51,11 +52,7 @@ function draw() {
         ball.move();
         ball.bounce();
         ball.display();
-        ball.touching();
-
-        if(ball.touch === false) {
-            console.log("idk");
-        }
+        ball.touching(balls);
     }
 
     

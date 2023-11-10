@@ -12,13 +12,18 @@ class Ball {
         this.active = true;
         this.sound = bSound;
         this.touch = true;
+        this.color = {
+            r: random(0, 255),
+            g: random(0, 255),
+            b: random(0, 255),
+        };
 
     }
 
     //calling everything to be displayed and how it will be called in the main script
     display() {
         push();
-        fill(207, 37, 184);
+        fill(this.color.r, this.color.g, this.color.b);
         noStroke();
         ellipse(this.x, this.y, this.size);
         pop();
@@ -50,20 +55,23 @@ class Ball {
             console.log("play music")
             this.sound.rate(randomRate); //making a random pitch from the rates when the ball bounces
             this.sound.play();
-            
+
         }
     }
 
-    touching() {
+    touching(boule) {
 
-        if (this.touch === true && this.y + this.size / 2 >= height) {
+        if (this.y + this.size / 2 >= height) {
             console.log("touching");
             push();
             noStroke();
-            fill("blue")
+            fill("white");
             ellipse(this.x, this.y, this.size); //making it another colour when it bounces just for fun
             pop();
-            this.touch = false; 
+            let x = random(0, width);
+            let y = random(-400, -100);
+            let ball = new Ball(x, y, bounceSound); //grab the array and create a new ball again
+            boule.push(ball);
 
         }
     }
