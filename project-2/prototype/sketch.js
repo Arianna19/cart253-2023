@@ -1,3 +1,19 @@
+/**
+ * Project 2: Ultimate Kirby World: Prototype 
+ * 
+ *  Arianna Narita
+ * 
+ * This prototype is just to show the overall direction the main world will take 
+ *  1. Platforms to jump on
+ *  2. user interaction 
+ *  3. Camera locked on to the user
+ * 
+ * MAIN POINT:
+ * Basically a main Kirby world which is a platform concept.
+ * The world will have secret tunnels that will lead to past assignments.
+ * 
+ */
+
 let kirb;
 let plat;
 let plat2;
@@ -12,7 +28,9 @@ function setup() {
 }
 
 function draw() {
+
   background(108, 191, 240);
+  
   kirb.draw();
   plat.draw();
   plat2.draw();
