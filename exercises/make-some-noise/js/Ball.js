@@ -17,7 +17,6 @@ class Ball {
             g: random(0, 255),
             b: random(0, 255),
         };
-
     }
 
     //calling everything to be displayed and how it will be called in the main script
