@@ -1,4 +1,4 @@
-class platform {
+class Platform {
 
   constructor(x, y, h, w, kirby) {
     this.x = x;
@@ -35,48 +35,24 @@ class platform {
   }
 
   collide() {
-
-
-    /*   if (this.kirby.y >= this.y && this.kirby.y <= this.y + this.h)
-        if (-this.kirby.xFix() + this.kirby.size / 2 >= this.x) {
-          this.kirby.moveRight = false;
-        } else {
-          this.kirby.moveRight = true;
-        } else this.kirby.moveRight = true */
-
-
-    if (-this.kirby.xFix() + this.kirby.size / 2 >= this.x && -this.kirby.xFix() - this.kirby.size / 2 <= this.x + this.w) {
-      if (this.kirby.y + this.kirby.size / 2 >= this.y) {
-        console.log("toucheing");
-        this.kirby.floor = this.y - (this.kirby.size / 2);
-        this.kirby.y = this.kirby.floor
-        console.log(this.kirby.size);
+    //bounds left  then right
+    if (this.kirby.y > this.y && this.kirby.y < this.y + this.h) {
+      if ((this.kirby.xFix() + this.kirby.size / 2) > this.x && this.w + this.x > (this.kirby.xFix() + this.kirby.size / 2)) {
+        this.kirby.setXR(this.x)
       }
-    } else {
-      this.kirby.floor = this.kirby.ground;
+      if ((this.kirby.xFix() - this.kirby.size / 2) < this.x + this.w && this.x < (this.kirby.xFix() + this.kirby.size / 2)) {
+        this.kirby.setXL(this.x + this.w)
+      }
     }
 
-
-
-    /*
-    //let abs = Math.abs(this.kirby.x)
-    if (-this.kirby.xFix() + this.kirby.size / 2 >= this.x && -this.kirby.xFix() - this.kirby.size / 2 <= this.x + this.w) {
-      if (this.kirby.y >= this.y) {
-        console.log("toucheing");
-        this.kirby.moveRight = false;
-        this.kirby.floor = this.y - (this.kirby.size/2) ;
-        console.log(this.kirby.size);
+    // bound up then down 
+    if ((this.kirby.xFix() + this.kirby.size / 2)-this.kirby.speed >= this.x && (this.kirby.xFix() - this.kirby.size / 2)+this.kirby.speed <= this.x + this.w) {
+      if ((this.kirby.y + this.kirby.size / 2) > this.y && this.h + this.y > ((this.kirby.y + this.kirby.size / 2))) {
+        this.kirby.setYT(this.y)
       }
-    } else {
-      this.kirby.floor = 450;
-      this.kirby.moveRight = true;
+      if ((this.kirby.y - this.kirby.size / 2) < this.y + this.h && this.y < (this.kirby.y + this.kirby.size / 2)) {
+        this.kirby.setYB(this.y + this.h)
+      }
     }
-    /*
-        if (-this.kirby.xFix() - this.kirby.size / 2 <= this.x + this.w) {
-          this.kirby.moveLeft = false
-        } else {
-          this.kirby.moveLeft = true
-        }
-        */
   }
 }
