@@ -38,20 +38,20 @@ class Platform {
     //bounds left  then right
     if (this.kirby.y > this.y && this.kirby.y < this.y + this.h) {
       if ((this.kirby.xFix() + this.kirby.size / 2) > this.x && this.w + this.x > (this.kirby.xFix() + this.kirby.size / 2)) {
-        this.kirby.setXR(this.x)
+        this.kirby.setXR(this.x);
       }
       if ((this.kirby.xFix() - this.kirby.size / 2) < this.x + this.w && this.x < (this.kirby.xFix() + this.kirby.size / 2)) {
-        this.kirby.setXL(this.x + this.w)
+        this.kirby.setXL(this.x + this.w);
       }
     }
 
     // bound up then down 
     if ((this.kirby.xFix() + this.kirby.size / 2)-this.kirby.speed >= this.x && (this.kirby.xFix() - this.kirby.size / 2)+this.kirby.speed <= this.x + this.w) {
       if ((this.kirby.y + this.kirby.size / 2) > this.y && this.h + this.y > ((this.kirby.y + this.kirby.size / 2))) {
-        this.kirby.setYT(this.y)
+        this.kirby.setYT(this.y);
       }
       if ((this.kirby.y - this.kirby.size / 2) < this.y + this.h && this.y < (this.kirby.y + this.kirby.size / 2)) {
-        this.kirby.setYB(this.y + this.h)
+        this.kirby.setYB(this.y + this.h);
       }
     }
   }
