@@ -16,12 +16,13 @@
 
 let kirb;
 let map1;
-
+//let door1;
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(10000, 850); //set 800 by 850 when done
   kirb = new Kirby();
   map1 = new mainMap(kirb);
+  //door1 = new Door(100,100,60,60,kirby);
   
   //plat3 = new platform(1000, 50, 50, 100, kirb);
 }
@@ -31,8 +32,9 @@ function draw() {
   background(108, 191, 240);
   kirb.draw();
   map1.draw();
+  //door1.draw();
 
-  //plat3.draw();
+
 
 
 } 
