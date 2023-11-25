@@ -33,7 +33,4 @@ function draw() {
   kirb.draw();
   map1.draw();
 
-
-
-
 } 
