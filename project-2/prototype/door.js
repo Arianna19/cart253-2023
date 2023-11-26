@@ -1,18 +1,26 @@
 class Door {
 
-    constructor(x, y, h, w, kirby) {
+    static count = 0
+    constructor(x, y, h, w, kirby, url) {
+        this.dCount = Door.count
+        Door.count++;
         this.x = x;
         this.y = y;
         this.h = h;
         this.w = w;
         this.kirby = kirby;
         this.fill = (217, 230, 250);
+        this.url = url
     }
 
     draw() {
 
         push();
-        fill(this.fill);
+        if (sessionStorage.getItem("door") == this.dCount)
+            fill("red");
+        else
+            fill(this.fill);
+
         rect(this.x, this.y, this.w, this.h);
         pop();
 
@@ -37,27 +45,21 @@ class Door {
 
     doorCollide() {
 
-        //if touching the right side of the door
+        //if touching the right side of the door        
+        if (sessionStorage.getItem("door") == this.dCount)
         if (this.kirby.y > this.y && this.kirby.y < this.y + this.h) {
-            if ((this.kirby.xFix() + this.kirby.size / 2) > this.x && this.w + this.x > (this.kirby.xFix() + this.kirby.size / 2)) {
+            if ((this.kirby.xFix()) > this.x && this.w + this.x > (this.kirby.xFix())) {
                 //this.kirby.setXR(this.x)
-                console.log('mini gameeee');
-                //change into mini game state
+                window.location.href = this.url;
+
             }
 
-            //if touching the left side of the door(object)
-            else if (this.kirby.y > this.y && this.kirby.y < this.y + this.h) {
-                if ((this.kirby.xFix() - this.kirby.size / 2) < this.x + this.w && this.x < (this.kirby.xFix() + this.kirby.size / 2)) {
-                    //this.kirby.setXL(this.x + this.w)
-                    console.log('mini game 2'); 
-                    //eventually change into mini game state
-                }
-            }
+
         }
 
-            
 
-        
+
+
 
 
     }
