@@ -1,18 +1,18 @@
 /**
- * Project 2: Ultimate Kirby World: Prototype 
+ * Project 2: Ultimate Kirby World: FINAL
  * 
  *  Arianna Narita
- * 
- * This prototype is just to show the overall direction the main world will take 
- *  1. Platforms to jump on
- *  2. user interaction 
- *  3. Camera locked on to the user
  * 
  * MAIN POINT:
  * Basically a main Kirby world which is a platform concept.
  * The world will have secret tunnels that will lead to past assignments.
  * 
  */
+
+//where images are loaded at first
+let imgPortal1;
+let imgCuteKirby
+
 
 let kirb;
 let map1;
@@ -21,9 +21,16 @@ if (sessionStorage.getItem("door") === null) {
   sessionStorage['door'] = "0"
 }
 
+function preload() {
+
+  imgPortal1 = loadImage('assets/images/portal1.png'); 
+  imgCuteKirby = loadImage('assets/images/walkingKirby.png');
+
+}
+
 function setup() {
   createCanvas(2725, 850); //set 800 by 850 when done
-  kirb = new Kirby();
+  kirb = new Kirby(imgCuteKirby);
   map1 = new mainMap(kirb);
   
   
@@ -37,4 +44,3 @@ function draw() {
 
 } 
 
-//lol calghslkjh

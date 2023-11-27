@@ -2,7 +2,8 @@ class Kirby {
 
   camX = 30;
   y = 30;
-  size = 50;
+  size = 120;
+  sizeK = 100;
   xPos = 100;
   moveRight = true;
   moveLeft = true;
@@ -10,16 +11,18 @@ class Kirby {
   speed = 5;
 
 
-  constructor() {
+  constructor(kirbPhoto) {
+    this.photo = kirbPhoto;
 
   }
 
   draw() {
-    push();
-    fill(252, 131, 248);
-    noStroke();
-    circle(this.xPos, this.y, this.size)
-    pop();
+    //push();
+    //fill(252, 131, 248);
+    //noStroke();
+    //circle(this.xPos, this.y, this.size)
+    //pop();
+    image(imgCuteKirby, this.xPos, this.y, this.size/2, this.sizeK/2);
     this.move()
     translate(this.camX, 0)
   }
