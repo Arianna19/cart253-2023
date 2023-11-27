@@ -1,7 +1,7 @@
 class Door {
 
     static count = 0
-    constructor(x, y, h, w, kirby, url) {
+    constructor(x, y, h, w, kirby, url, portalImg) {
         this.dCount = Door.count
         Door.count++;
         this.x = x;
@@ -9,8 +9,11 @@ class Door {
         this.h = h;
         this.w = w;
         this.kirby = kirby;
-        this.fill = (217, 230, 250);
-        this.url = url
+        this.fill = (217, 230, 250);;
+        this.url = url;
+        this.image = portalImg;
+        this.size = 70;
+        this.sizeP = 80;
     }
 
     draw() {
@@ -20,11 +23,14 @@ class Door {
             fill("red");
         else
             fill(this.fill);
-
-        rect(this.x, this.y, this.w, this.h);
+        
+        noStroke();
+        rect(this.x, this.y, this.w, this.h, this.size, this.sizeP);
+ 
         pop();
 
-        push();
+        image(imgPortal1, this.x, this.y, this.h, this.w);
+        /*push();
         //top
         stroke("blue");
         line(this.x, this.y, this.x + this.w, this.y);
@@ -38,8 +44,10 @@ class Door {
         stroke("yellow");
         line(this.x, this.y, this.x, this.y + this.h);
         pop();
+        */
 
         this.doorCollide();
+       
 
     }
 
@@ -51,6 +59,7 @@ class Door {
             if ((this.kirby.xFix()) > this.x && this.w + this.x > (this.kirby.xFix())) {
                 //this.kirby.setXR(this.x)
                 window.location.href = this.url;
+                
 
             }
 

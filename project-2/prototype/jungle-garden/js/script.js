@@ -21,11 +21,11 @@ let garden = {
     //An array for the faster shrinking flowers (red ones)
     fastFlowers: [],
     //the amount that should appear, a little less than the blue ones
-    numFastFlowers: 2,
+    numFastFlowers: 3,
     // An array to store the individual flowers
     flowers: [],
     // How many flowers in the garden
-    numFlowers: 3,
+    numFlowers: 5,
     // Array for the amoung of butterflies
     butterflys: [],
     //amount of butterflies that will pop up 

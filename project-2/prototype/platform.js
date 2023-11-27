@@ -1,35 +1,45 @@
 class Platform {
 
-  constructor(x, y, h, w, kirby) {
+  constructor(x, y, h, w, kirby, snowPlatimg) {
     this.x = x;
     this.y = y;
     this.h = h;
     this.w = w;
     this.kirby = kirby;
     this.fill = (217, 230, 250);
+    this.image = snowPlatimg
+    this.size = 50;
+    this.sizeS = 60;
   }
 
   draw() {
 
     push();
-    fill(this.fill);
+    noFill()
+    noStroke();
     rect(this.x, this.y, this.w, this.h);
     pop();
 
     push();
     //top
-    stroke("blue");
+    noStroke();
+    //stroke("blue");
     line(this.x, this.y, this.x + this.w, this.y);
     //right
-    stroke("purple");
+    noStroke();
+    //stroke("purple");
     line(this.x + this.w, this.y, this.x + this.w, this.y + this.h);
     //bottom
-    stroke("red");
+    noStroke();
+    //stroke("red");
     line(this.x, this.y + this.h, this.x + this.w, this.y + this.h);
     //left
-    stroke("yellow");
+    noStroke();
+    //stroke("yellow");
     line(this.x, this.y, this.x, this.y + this.h);
     pop();
+
+    image(snowPlat, this.x - 5, this.y, this.w, this.h);
 
     this.collide();
   }

@@ -2,7 +2,8 @@ class Kirby {
 
   camX = 30;
   y = 30;
-  size = 50;
+  size = 60;
+  sizeK = 50; 
   xPos = 100;
   moveRight = true;
   moveLeft = true;
@@ -10,18 +11,25 @@ class Kirby {
   speed = 5;
 
 
-  constructor() {
-
+  constructor(kirbPhoto, snowflakes) {
+    this.photo = kirbPhoto;
+    this.bgPhoto = snowflakes;
   }
 
   draw() {
-    push();
+    /*push();
     fill(252, 131, 248);
     noStroke();
     circle(this.xPos, this.y, this.size)
+    pop(); */
+    image(imgCuteKirby, this.xPos, this.y -15, this.size, this.sizeK);
+    this.move();
+    translate(this.camX, 0);
+    
+    push();
+    image(snowflakeFalling, -100 - this.camX, 0, 850, 850);
     pop();
-    this.move()
-    translate(this.camX, 0)
+
   }
 
   move() {
@@ -44,22 +52,22 @@ class Kirby {
   }
 
   setXR(x) {
-    this.camX = -(x - this.xPos - this.size / 2)
-    console.log(x - this.xPos)
+    this.camX = -(x - this.xPos - this.size);
+    console.log(x - this.xPos);
   }
   setXL(x) {
-    this.camX = -(x - this.xPos + this.size / 2)
-    console.log(x - this.xPos)
+    this.camX = -(x - this.xPos + this.size /2);
+    console.log(x - this.xPos);
   }
   setYT(y) {
-    this.y = (y - this.size / 2)
+    this.y = (y - this.size / 2);
   }
   setYB(y) {
-    this.y = (y +  this.size / 2)
-    console.log(this.y)
+    this.y = (y +  this.size / 2);
+    console.log(this.y);
   }
 
   xFix() {
-    return -(this.camX - this.xPos)
+    return -(this.camX - this.xPos);
   }
 }
