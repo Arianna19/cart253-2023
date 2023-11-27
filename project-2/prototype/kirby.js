@@ -3,11 +3,11 @@ class Kirby {
   camX = 30;
   y = 30;
   size = 60;
-  sizeK = 50; 
+  sizeK = 50;
   xPos = 100;
   moveRight = true;
   moveLeft = true;
-  floor = height-this.size/2;
+  floor = height - this.size / 2;
   speed = 5;
 
 
@@ -22,10 +22,10 @@ class Kirby {
     noStroke();
     circle(this.xPos, this.y, this.size)
     pop(); */
-    image(imgCuteKirby, this.xPos, this.y -15, this.size, this.sizeK);
+    image(imgCuteKirby, this.xPos, this.y - 15, this.size, this.sizeK);
     this.move();
     translate(this.camX, 0);
-    
+
     push();
     image(snowflakeFalling, -100 - this.camX, 0, 850, 850);
     pop();
@@ -33,11 +33,11 @@ class Kirby {
   }
 
   move() {
-    if (keyIsDown(LEFT_ARROW)&& this.camX < 200) {
+    if (keyIsDown(LEFT_ARROW) && this.camX < 200) {
       this.camX += this.speed;
     }
 
-    if (keyIsDown(RIGHT_ARROW) && this.camX > -2500)  {
+    if (keyIsDown(RIGHT_ARROW) && this.camX > -2500) {
       this.camX -= this.speed;
     }
 
@@ -46,7 +46,7 @@ class Kirby {
     }
 
     if (keyIsDown(32)) {
-      this.y -= 10 ;
+      this.y -= 10;
 
     }
   }
@@ -56,14 +56,14 @@ class Kirby {
     console.log(x - this.xPos);
   }
   setXL(x) {
-    this.camX = -(x - this.xPos + this.size /2);
+    this.camX = -(x - this.xPos + this.size / 2);
     console.log(x - this.xPos);
   }
   setYT(y) {
     this.y = (y - this.size / 2);
   }
   setYB(y) {
-    this.y = (y +  this.size / 2);
+    this.y = (y + this.size / 2);
     console.log(this.y);
   }
 

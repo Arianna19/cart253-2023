@@ -27,7 +27,7 @@ let kirb;
 let map1;
 //let door1;
 if (sessionStorage.getItem("door") === null) {
-  sessionStorage['door'] = "0"
+  sessionStorage['door'] = "0";
 }
 
 function preload() {

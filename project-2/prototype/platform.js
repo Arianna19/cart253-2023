@@ -7,7 +7,7 @@ class Platform {
     this.w = w;
     this.kirby = kirby;
     this.fill = (217, 230, 250);
-    this.image = snowPlatimg
+    this.image = snowPlatimg;
     this.size = 50;
     this.sizeS = 60;
   }
@@ -15,7 +15,7 @@ class Platform {
   draw() {
 
     push();
-    noFill()
+    noFill();
     noStroke();
     rect(this.x, this.y, this.w, this.h);
     pop();

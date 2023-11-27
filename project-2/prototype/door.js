@@ -1,8 +1,9 @@
 class Door {
 
-    static count = 0
+    static count = 0;
+    
     constructor(x, y, h, w, kirby, url, portalImg) {
-        this.dCount = Door.count
+        this.dCount = Door.count;
         Door.count++;
         this.x = x;
         this.y = y;
