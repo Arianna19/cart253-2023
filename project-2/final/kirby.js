@@ -25,11 +25,11 @@ class Kirby {
   }
 
   move() {
-    if (keyIsDown(LEFT_ARROW)) {
+    if (keyIsDown(LEFT_ARROW)&& this.camX < 200) {
       this.camX += this.speed;
     }
 
-    if (keyIsDown(RIGHT_ARROW)) {
+    if (keyIsDown(RIGHT_ARROW) && this.camX > -2500)  {
       this.camX -= this.speed;
     }
 

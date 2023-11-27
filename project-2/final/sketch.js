@@ -17,9 +17,12 @@
 let kirb;
 let map1;
 //let door1;
+if (sessionStorage.getItem("door") === null) {
+  sessionStorage['door'] = "0"
+}
 
 function setup() {
-  createCanvas(10000, 850); //set 800 by 850 when done
+  createCanvas(2725, 850); //set 800 by 850 when done
   kirb = new Kirby();
   map1 = new mainMap(kirb);
   
@@ -30,10 +33,8 @@ function setup() {
 function draw() {
 
   background(108, 191, 240);
-  kirb.draw();
   map1.draw();
 
-
-
-
 } 
+
+//lol calghslkjh
