@@ -22,13 +22,13 @@ class Door {
         push();
         if (sessionStorage.getItem("door") == this.dCount) {
             fill(186, 7, 7);
-            image(candyArrow, this.x + 65, this.y + 2, 60, 60); 
+            image(candyArrow, this.x + 65, this.y + 2, 60, 60);
         }
         else
             fill(this.fill);
-        
+
         noStroke();
-        circle(this.x + (this.w/2), this.y + (this.w/2), 30);
+        circle(this.x + (this.w / 2), this.y + (this.w / 2), 30);
         pop();
 
         image(imgPortal1, this.x, this.y, this.h, this.w);
@@ -49,7 +49,7 @@ class Door {
         */
 
         this.doorCollide();
-       
+
 
     }
 
@@ -57,21 +57,11 @@ class Door {
 
         //if touching the right side of the door        
         if (sessionStorage.getItem("door") == this.dCount)
-        if (this.kirby.y > this.y && this.kirby.y < this.y + this.h) {
-            if ((this.kirby.xFix()) > this.x && this.w + this.x > (this.kirby.xFix())) {
-                //this.kirby.setXR(this.x)
-                window.location.href = this.url;
-                
-
+            if (this.kirby.y > this.y && this.kirby.y < this.y + this.h) {
+                if ((this.kirby.xFix()) > this.x && this.w + this.x > (this.kirby.xFix())) {
+                    //this.kirby.setXR(this.x)
+                    window.location.href = this.url;
+                }
             }
-
-
-        }
-
-
-
-
-
-
     }
 }

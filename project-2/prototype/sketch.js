@@ -24,6 +24,9 @@ let snowflakeFalling;
 let snowflakeFallingCreate;
 let candyArrow;
 
+//where sounds are defined
+let xmasMainMusic;
+
 let kirb;
 let map1;
 //let door1;
@@ -33,13 +36,16 @@ if (sessionStorage.getItem("door") === null) {
 
 function preload() {
 
+  //loading images
   imgPortal1 = loadImage('assets/images/portal1.png');
   imgCuteKirby = loadImage('assets/images/walkingKirby.png');
   snowPlat = loadImage('assets/images/snowPlatform2.png');
 
+  //loading gifs
   snowflakeFalling = loadImage('assets/images/giphy.gif');
   candyArrow = loadImage('assets/images/arrowChristmas.gif');
   //snowflakeFallingCreate = createImg('assets/images/giphy.gif');
+  xmasMainMusic = loadSound('assets/sounds/ghettoChristmas.mp3');
 
 }
 
@@ -47,6 +53,7 @@ function setup() {
   createCanvas(800, 850); //set 800 by 850 when done
   kirb = new Kirby(imgCuteKirby, snowflakeFalling);
   map1 = new mainMap(kirb);
+  xmasMainMusic.play();
 
 }
 
@@ -54,7 +61,6 @@ function draw() {
 
   background(108, 191, 240);
   map1.draw();
-
  /* if (state === `start screen`) { //title screen with a little bit of instructions
     startScreen();
   }
