@@ -27,7 +27,7 @@ class Kirby {
     translate(this.camX, 0);
 
     push();
-    image(snowflakeFalling, -100 - this.camX, 0, 850, 850);
+    image(snowflakeFalling, -100 - this.camX, 0, 900, 830); //gif of snowflakes that follows user
     pop();
 
   }

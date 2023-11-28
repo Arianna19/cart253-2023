@@ -12,10 +12,10 @@ class mainMap {
         this.plat7 = new Platform(2200, 550, 50, 200, kirb);
 
         //amound of doors that will be in the main map 
-        this.door1 = new Door(195, 240, 60, 60, kirb,"/age-of-aquariums/index.html"); //the doors/objects that kirby will interact with to enter mini games
-        this.door2 = new Door(595, 540, 60, 60, kirb,"/dodge-emReal/index.html");
+        this.door1 = new Door(190, 240, 60, 60, kirb,"/age-of-aquariums/index.html"); //the doors/objects that kirby will interact with to enter mini games
+        this.door2 = new Door(585, 540, 60, 60, kirb,"/dodge-emReal/index.html");
         this.door3 = new Door(1050, 340, 60, 60, kirb,"/jungle-garden/index.html");
-        this.door4 = new Door(1345, 90, 60, 60, kirb,"/love-actually/index.html");
+        this.door4 = new Door(1340, 90, 60, 60, kirb,"/love-actually/index.html");
         this.door5 = new Door(1860, 260, 60, 60, kirb,"/age-of-aquariums/index.html");
         this.door6 = new Door(2270, 490, 60, 60, kirb,"/age-of-aquariums/index.html");
     }

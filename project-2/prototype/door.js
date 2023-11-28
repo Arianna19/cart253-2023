@@ -1,7 +1,7 @@
 class Door {
 
     static count = 0;
-    
+
     constructor(x, y, h, w, kirby, url, portalImg) {
         this.dCount = Door.count;
         Door.count++;
@@ -13,21 +13,22 @@ class Door {
         this.fill = (217, 230, 250);;
         this.url = url;
         this.image = portalImg;
-        this.size = 70;
-        this.sizeP = 80;
+        this.size = 50;
+        this.sizeP = 50;
     }
 
     draw() {
 
         push();
-        if (sessionStorage.getItem("door") == this.dCount)
-            fill("red");
+        if (sessionStorage.getItem("door") == this.dCount) {
+            fill(186, 7, 7);
+            image(candyArrow, this.x + 65, this.y + 2, 60, 60); 
+        }
         else
             fill(this.fill);
         
         noStroke();
-        rect(this.x, this.y, this.w, this.h, this.size, this.sizeP);
- 
+        circle(this.x + (this.w/2), this.y + (this.w/2), 30);
         pop();
 
         image(imgPortal1, this.x, this.y, this.h, this.w);
