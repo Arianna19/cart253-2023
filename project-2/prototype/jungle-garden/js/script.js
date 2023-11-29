@@ -161,7 +161,7 @@ function flowerAlive() {
     textSize(20);
     fill(0, 230, 242);
     textAlign(CENTER, CENTER);
-    text('~click enter to restart~', width / 2, 400);
+    text('~click enter to continue~', width / 2, 400);
     pop();
 
 }

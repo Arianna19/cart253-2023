@@ -123,9 +123,10 @@ function start() {
 
     push();
     textSize(50);
+    textFont('Hevaltica');
     fill('Yellow');
     textAlign(CENTER, CENTER);
-    text('Hungry?', width / 2, height / 2);
+    text('Help Feed Hungry Kirby', width / 2, height / 2);
     pop();
 
     push();
@@ -161,7 +162,7 @@ function happyEating() {
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('~click enter to restart~', width / 2, 450);
+    text('~click enter to continue~', width / 2, 460);
     pop();
 
 }

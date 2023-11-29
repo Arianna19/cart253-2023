@@ -78,13 +78,15 @@ function draw() {
     restart();
 
     //fun background things, making it crazy 
-    /*for (let i = 0; i < 10; i++) { //every frame 10 dots need to appear per 60sec
+    push();
+    for (let i = 0; i < 3; i++) { //every frame 10 dots need to appear per 60sec
     let s = random(0,width);
     let s2 = random(0,height);
     strokeWeight(25);
     stroke(255);
     point(s,s2);
-    } */
+    } 
+    pop();
 
 
     if (state === `simulation`) {
@@ -136,7 +138,7 @@ function simulation() {
 
     push();
     textSize(45);
-    fill(250, 142, 0);
+    fill(`blue`);
     textFont('Hevaltica');
     text("Just don't DIE!", 20, 40);
     pop();
@@ -200,7 +202,7 @@ function simulation() {
 function lived() {
 
     push();
-    textSize(32);
+    textSize(50);
     fill('White');
     textFont('Hevaltica')
     textAlign(CENTER, CENTER);
