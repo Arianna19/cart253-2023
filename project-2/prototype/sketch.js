@@ -53,14 +53,19 @@ function setup() {
   createCanvas(800, 850); //set 800 by 850 when done
   kirb = new Kirby(imgCuteKirby, snowflakeFalling);
   map1 = new mainMap(kirb);
-  xmasMainMusic.play();
-
+  //xmasMainMusic.play(); //UNCOMMENT THIS PART BEFORE SUBMITTING ITS MUSICCCCC
 }
 
 function draw() {
 
   background(108, 191, 240);
   map1.draw();
+  //getAudioContext().resume(); //UNCOMMENT THIS PART BEFORE SUBMITTING ITS MUSICCCCC
+}
+
+
+
+
  /* if (state === `start screen`) { //title screen with a little bit of instructions
     startScreen();
   }
@@ -71,7 +76,8 @@ function draw() {
     winGame();
   } */
 
-} 
+
+
 
 function startScreen() {
 
