@@ -8,6 +8,9 @@
 let img;
 let imgB;
 let imgT;
+let state = `simulation`;
+let timer = 15;
+
 
 function preload() {
     img = loadImage('assets/images/kirbyInhale.png');
@@ -18,8 +21,8 @@ function preload() {
 let bowser = { //settings of the thing that will "hurt" kirby 
     x: 0,
     y: 250,
-    sizeB: 200,
-    sizeBo: 250,
+    sizeB: 110,
+    sizeBo: 150,
     velocityX: 0,
     velocityY: 0,
     speed: 7,
@@ -33,7 +36,7 @@ let bowser = { //settings of the thing that will "hurt" kirby
 let user = { //kirby description
     x: 250,
     y: 250,
-    size: 100,
+    size: 20,
     fill: {
         r2: 255,
         g2: 130,
@@ -113,7 +116,6 @@ function noTime() {
     pop();
 }
 
-let timer = 15;
 function timeCount() {
     //timer
     //frameCount keeps track the amount of times prog has gone through this statement
@@ -121,7 +123,7 @@ function timeCount() {
         timer--; //remove from the timer if this condition is met
     }
     if (timer == 0) {
-        noTime()
+        state = `lived`;
         if (keyIsDown(13)) {
             sessionStorage['door'] = '2';
             window.location.href = '/';
@@ -129,8 +131,22 @@ function timeCount() {
     }
 }
 
-let state = `simulation`;
+
 function simulation() {
+
+    push();
+    textSize(45);
+    fill(250, 142, 0);
+    textFont('Hevaltica');
+    text("Just don't DIE!", 20, 40);
+    pop();
+
+    push();
+    textSize(25);
+    fill(209, 40, 21);
+    textFont('Hevaltica');
+    text('Time left: ' + timer + ' secs', 20, 75);
+    pop();
 
 
     //changing kirby colour based on movement (if else statement)
@@ -201,7 +217,7 @@ function lived() {
 
     push();
     textSize(20);
-    fill(0, 230, 242);
+    fill(`blue`);
     textAlign(CENTER, CENTER);
     text('~click enter to continue~', width / 2, 400);
     pop();
@@ -232,12 +248,10 @@ function restart() {
 function badEndingRestart() {
 
     if (keyIsDown(ENTER) && state === `died`) {
-
+        timer = 15;
         bowser.y = random(0, height); //spawn
         turtle.x = random(width, 0); //spawn
         state = 'simulation';
-
-
     }
 }
 

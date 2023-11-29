@@ -112,7 +112,7 @@ function poppedAll() {
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('~click enter to restart~', width / 2, 350);
+    text('~click enter to continue~', width / 2, 350);
     pop();
 }
 
@@ -211,7 +211,7 @@ function restart() {
     //how the player restarts
     if (keyIsDown(13) && state === `no time`) { //if enter is down while on the start screen make the game go in the simulation state
         state = `simulation`;
-        timer = 15; //reseting the timer so that the simulation starts again
+        timer = 10; //reseting the timer so that the simulation starts again
         for (let i = 0; i < bubbleFrenzy.length; i++) {
             bubbleFrenzy[i].popped = false; //find at each bubble the ones that are true and make them false so they pop up again
         }
@@ -221,7 +221,7 @@ function restart() {
         sessionStorage['door'] = '1'; 
         window.location.href = '/';
        // state = `simulation`;
-        timer = 15; //reseting the timer so that the simulation starts again
+        timer = 10; //reseting the timer so that the simulation starts again
         for (let i = 0; i < bubbleFrenzy.length; i++) {
             bubbleFrenzy[i].popped = false; //find at each bubble the ones that are true and make them false so they pop up again
         }
