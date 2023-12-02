@@ -34,7 +34,6 @@ class mainMap {
         image(imgStarCursor, mouseX, mouseY, 20, 20);
         noCursor();
         
-        
 
         this.kirb.draw()
         //calling each platform and 'drawing them'
