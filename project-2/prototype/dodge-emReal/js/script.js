@@ -8,8 +8,10 @@
 let img;
 let imgB;
 let imgT;
+
 let state = `simulation`;
 let timer = 15;
+
 
 
 function preload() {
@@ -17,6 +19,7 @@ function preload() {
     imgB = loadImage('assets/images/bowserBad.png');
     imgT = loadImage('assets/images/turtleDude.png');
 }
+    
 
 let bowser = { //settings of the thing that will "hurt" kirby 
     x: 0,

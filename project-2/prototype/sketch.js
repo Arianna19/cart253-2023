@@ -18,6 +18,11 @@
 let imgCuteKirby;
 let imgPortal1;
 let snowPlat;
+let imgTree;
+let imgSnowman;
+let imgSnowman2;
+let imgMoutains;
+let imgStarCursor;
 
 //where gifs are defined 
 let snowflakeFalling;
@@ -38,28 +43,57 @@ function preload() {
 
   //loading images
   imgPortal1 = loadImage('assets/images/portal1.png');
-  imgCuteKirby = loadImage('assets/images/walkingKirby.png');
+  imgCuteKirby = loadImage('assets/images/walkingKirby.gif');
+  imgCuteKirby2 = loadImage('assets/images/walkingKirby-rotate.gif');
+  imgTree = loadImage('assets/images/treeSnow.webp');
   snowPlat = loadImage('assets/images/snowPlatform2.png');
+  imgSnowman = loadImage('assets/images/snowMan.png');
+  imgSnowman2 = loadImage('assets/images/imageSnowman2.webp');
+  imgStarCursor = loadImage('assets/images/star.png');
 
   //loading gifs
   snowflakeFalling = loadImage('assets/images/giphy.gif');
   candyArrow = loadImage('assets/images/arrowChristmas.gif');
   //snowflakeFallingCreate = createImg('assets/images/giphy.gif');
+
+  //loading sounds
   xmasMainMusic = loadSound('assets/sounds/ghettoChristmas.mp3');
 
 }
 
 function setup() {
-  createCanvas(800, 850); //set 800 by 850 when done
-  kirb = new Kirby(imgCuteKirby, snowflakeFalling);
+  createCanvas(2700, 850); //set 800 by 850 when done
+  kirb = new Kirby(imgCuteKirby,imgCuteKirby2, snowflakeFalling);
   map1 = new mainMap(kirb);
+  
   //xmasMainMusic.play(); //UNCOMMENT THIS PART BEFORE SUBMITTING ITS MUSICCCCC
+  
 }
 
 function draw() {
 
   background(108, 191, 240);
+
   map1.draw();
+  push();
+
+  //images and where trees are
+  image(imgTree, 200, 605, 150, 200);
+  image(imgTree, 180, 655, 100, 150);
+  image(imgTree, 700, 655, 100, 150);
+  image(imgTree, 1400, 505, 200, 300);
+  image(imgTree, 1320, 555, 155, 250);
+  image(imgTree, 1490, 625, 155, 180);
+  image(imgTree, 1550, 655, 100, 150);
+  image(imgTree, 2000, 655, 100, 150);
+  image(imgTree, 2425, 557, 155, 250);
+
+
+  //images for where snowmen are
+  image(imgSnowman, 755, 760, 40, 50);
+  image(imgSnowman2, 2000, 760, 40, 50);
+  pop();
+
   //getAudioContext().resume(); //UNCOMMENT THIS PART BEFORE SUBMITTING ITS MUSICCCCC
 }
 
@@ -77,7 +111,7 @@ function draw() {
   } */
 
 
-
+/*
 
 function startScreen() {
 
@@ -117,4 +151,4 @@ function winGame() {
   text('~click enter to replay~', width / 2, 450);
   pop();
 
-}
+} */

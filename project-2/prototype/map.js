@@ -30,6 +30,10 @@ class mainMap {
             point(s,s2);
             }
             */
+    
+        image(imgStarCursor, mouseX, mouseY, 20, 20);
+        noCursor();
+        
         
 
         this.kirb.draw()
@@ -53,7 +57,6 @@ class mainMap {
         
 
     } 
-        
     
 
 }

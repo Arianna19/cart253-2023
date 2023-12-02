@@ -1,6 +1,7 @@
 class Kirby {
 
   camX = 30;
+  PrevX = 30;
   y = 30;
   size = 60;
   sizeK = 50;
@@ -9,20 +10,18 @@ class Kirby {
   moveLeft = true;
   floor = height - this.size / 2;
   speed = 5;
+  direction = true
 
-
-  constructor(kirbPhoto, snowflakes) {
-    this.photo = kirbPhoto;
+  constructor(kirbPhotoR,kirbPhotoL, snowflakes) {
+    this.photoR = kirbPhotoR;
+    this.photoL = kirbPhotoL;
+    this.photo = kirbPhotoR
     this.bgPhoto = snowflakes;
   }
 
   draw() {
-    /*push();
-    fill(252, 131, 248);
-    noStroke();
-    circle(this.xPos, this.y, this.size)
-    pop(); */
-    image(imgCuteKirby, this.xPos, this.y - 15, this.size, this.sizeK);
+
+    image(this.photo, this.xPos, this.y - 15, this.size, this.sizeK);
     this.move();
     translate(this.camX, 0);
 
@@ -30,15 +29,28 @@ class Kirby {
     image(snowflakeFalling, -100 - this.camX, 0, 900, 830); //gif of snowflakes that follows user
     pop();
 
+
   }
 
   move() {
+    if(this.PrevX==this.camX){
+      this.photo.setFrame(0)
+      this.photo.pause()
+    }else{
+      this.PrevX=this.camX
+    }
+
     if (keyIsDown(LEFT_ARROW) && this.camX < 200) {
       this.camX += this.speed;
+      this.photo = this.photoL;
+      this.photo.play()
+
     }
 
     if (keyIsDown(RIGHT_ARROW) && this.camX > -2500) {
       this.camX -= this.speed;
+      this.photo = this.photoR;
+      this.photo.play()
     }
 
     if (this.y <= this.floor - 5) {
