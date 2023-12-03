@@ -32,21 +32,6 @@ class Door {
         pop();
 
         image(imgPortal1, this.x, this.y, this.h, this.w);
-        /*push();
-        //top
-        stroke("blue");
-        line(this.x, this.y, this.x + this.w, this.y);
-        //right
-        stroke("purple");
-        line(this.x + this.w, this.y, this.x + this.w, this.y + this.h);
-        //bottom
-        stroke("red");
-        line(this.x, this.y + this.h, this.x + this.w, this.y + this.h);
-        //left
-        stroke("yellow");
-        line(this.x, this.y, this.x, this.y + this.h);
-        pop();
-        */
 
         this.doorCollide();
 

@@ -8,21 +8,18 @@
 
 "use strict";
 
-/**
- * Description of preload
-*/
-
 
 let imgKirby;
 let imgCookie;
 let imgFatKirby;
 let imgKirby2;
+let cookieCounter = 0;
 
 let kirby = {
     x: undefined,
     y: 250,
-    size: 80,
-    sizeK: 80,
+    size: 60,
+    sizeK: 60,
     vx: 0,
     vy: 0,
     speed: 3,
@@ -36,11 +33,11 @@ let kirby = {
 let kirbyCookie = {
     x: undefined,
     y: 250,
-    size: 55,
-    sizeC: 55,
-    vx: 0,
-    vy: 0,
-    speed: 5,
+    size: 35,
+    sizeC: 35,
+    vx: 30,
+    vy: 30,
+    speed: 7,
     fill: {
         r2: 255,
         g2: 130,
@@ -77,14 +74,15 @@ function setup() {
 function setUpCharacters() {
 
     //where the cookie and kirby will appear
-    kirby.x = width / 3;
+    kirby.x = width / 2;
+    kirby.y = height /2;
     kirbyCookie.x = random(200, 600);
     kirbyCookie.y = random(200, 600);
 
 
     //How the cookie moves from the start randomly spawning and using a random speed
-    kirbyCookie.vx = random(-kirbyCookie.speed, kirbyCookie.speed);
-    kirbyCookie.vy = random(-kirbyCookie.speed, kirbyCookie.speed);
+    kirbyCookie.vx = (-kirbyCookie.speed, kirbyCookie.speed);
+    kirbyCookie.vy = (-kirbyCookie.speed, kirbyCookie.speed);
 
     //restarting as normal size kirby
     imgKirby = imgKirby2;
@@ -130,10 +128,18 @@ function start() {
     pop();
 
     push();
+    textSize(25);
+    textFont('Hevaltica');
+    fill('red');
+    textAlign(CENTER, CENTER);
+    text('Help him catch his cookie!', width / 2, 455);
+    pop();
+
+    push();
     textSize(20);
     fill('blue');
     textAlign(CENTER, CENTER);
-    text('~click enter to start~', width / 2, 450);
+    text('~click enter to start~', width / 2, 500);
     pop();
 
 }
@@ -213,7 +219,9 @@ function checkOverlap() {
 
     //if the cookie was eaten by kirby 
     let d = dist(kirby.x, kirby.y, kirbyCookie.x, kirbyCookie.y);
-    if (d < kirby.size / 2 + kirbyCookie.size / 2) {
+    if (d < kirby.size / 2 + kirbyCookie.size / 2 && cookieCounter < 3) {
+        cookieCounter++;
+
         state = 'happy eating';
     }
 }

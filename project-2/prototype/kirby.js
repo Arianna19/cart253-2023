@@ -47,7 +47,7 @@ class Kirby {
 
     }
 
-    if (keyIsDown(RIGHT_ARROW) && this.camX > -2500) {
+    if (keyIsDown(RIGHT_ARROW) && this.camX > -1500) {
       this.camX -= this.speed;
       this.photo = this.photoR;
       this.photo.play()
