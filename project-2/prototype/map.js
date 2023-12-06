@@ -22,7 +22,7 @@ class mainMap {
 
     draw() {
 
-        image(imgStarCursor, mouseX, mouseY, 20, 20);
+        image(imgStarCursor, mouseX, mouseY, 20, 20); //replace the cursor with star image just to be cute
         noCursor();
         
 

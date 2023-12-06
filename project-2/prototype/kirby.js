@@ -21,8 +21,8 @@ class Kirby {
 
   draw() {
 
-    image(this.photo, this.xPos, this.y - 15, this.size, this.sizeK);
-    this.move();
+    image(this.photo, this.xPos, this.y - 15, this.size, this.sizeK); //image of kirby/user
+    this.move(); //call the move function
     translate(this.camX, 0);
 
     push();

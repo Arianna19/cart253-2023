@@ -20,6 +20,7 @@ class Platform {
     rect(this.x, this.y, this.w, this.h);
     pop();
 
+    //following is basically to help with bounds of each platform so that the user can't go through them
     push();
     //top
     noStroke();

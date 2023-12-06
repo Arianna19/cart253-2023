@@ -1,6 +1,6 @@
 class Door {
 
-    static count = 0;
+    static count = 0; //counter to know when to stop reading the doors
 
     constructor(x, y, h, w, kirby, url, portalImg) {
         this.dCount = Door.count;
@@ -20,18 +20,18 @@ class Door {
     draw() {
 
         push();
-        if (sessionStorage.getItem("door") == this.dCount) {
+        if (sessionStorage.getItem("door") == this.dCount) { //if the door is at the counters position colour it inside to indicate which one user goes to
             fill(186, 7, 7);
-            image(candyArrow, this.x + 65, this.y + 2, 60, 60);
+            image(candyArrow, this.x + 65, this.y + 2, 60, 60); //display arrow gif 
         }
         else
             fill(this.fill);
 
         noStroke();
-        circle(this.x + (this.w / 2), this.y + (this.w / 2), 30);
+        circle(this.x + (this.w / 2), this.y + (this.w / 2), 30); //circles inside the doors that change colour when its their turn to be cleared
         pop();
 
-        image(imgPortal1, this.x, this.y, this.h, this.w);
+        image(imgPortal1, this.x, this.y, this.h, this.w); //image used for portal/door
 
         this.doorCollide();
 

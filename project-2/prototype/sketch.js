@@ -1,16 +1,11 @@
 /**
- * Project 2: Ultimate Kirby World: Prototype 
+ * Project 2: Ultimate Kirby World: FINAL 
  * 
  *  Arianna Narita
  * 
- * This prototype is just to show the overall direction the main world will take 
- *  1. Platforms to jump on
- *  2. user interaction 
- *  3. Camera locked on to the user
- * 
  * MAIN POINT:
  * Basically a main Kirby world which is a platform concept.
- * The world will have secret tunnels that will lead to past assignments.
+ * Each door leads to a mini game that the person has to clear to finish the world
  * 
  */
 
@@ -46,6 +41,7 @@ if (sessionStorage.getItem("door") === null) {
   sessionStorage['door'] = "0";
 }
 
+//let the state of the screen start at the start screen but then proceed to other states if false
 if (sessionStorage.getItem("state") === null) {
   sessionStorage['state'] = "start screen";
 } else {
@@ -67,8 +63,6 @@ function preload() {
   imgLights = loadImage('assets/images/lights.webp');
   derpyKirb = loadImage('assets/images/endScreen.webp');
 
-
-
   //loading gifs
   snowflakeFalling = loadImage('assets/images/giphy.gif');
   candyArrow = loadImage('assets/images/arrowChristmas.gif');
@@ -81,11 +75,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 850); //set 800 by 850 when done
+  createCanvas(800, 850); 
   kirb = new Kirby(imgCuteKirby, imgCuteKirby2, snowflakeFalling);
   map1 = new mainMap(kirb);
 
-  xmasMainMusic.play(); //UNCOMMENT THIS PART BEFORE SUBMITTING ITS MUSICCCCC
+  xmasMainMusic.play(); //music in the background
 
 }
 
@@ -94,7 +88,7 @@ function draw() {
   menu();
   replay();
 
-  getAudioContext().resume(); //UNCOMMENT THIS PART BEFORE SUBMITTING ITS MUSICCCCC
+  getAudioContext().resume(); 
 
   if (state === `start screen`) { //title screen with a little bit of instructions
     startScreen();
@@ -124,13 +118,14 @@ function startScreen() {
   fill('black');
   textAlign(CENTER, CENTER);
   text('{Help Kirby conquer winter by completing each mini quest!!!}', width / 2, 473);
+  text('{Use the arrow keys and space to move!!!}', width / 2, 488);
   pop();
 
   push();
   textSize(20);
   fill(95, 179, 117);
   textAlign(CENTER, CENTER);
-  text('~click enter to restart~', width / 2, 500);
+  text('~click enter to restart~', width / 2, 510);
   pop();
 
   image(imgLights, 0, 20, 500, 100);
@@ -202,7 +197,8 @@ function menu() {
   }
 }
 
-function happyEnding() { //how the player clears the main game
+//how the player clears the main game
+function happyEnding() { 
 
   if (sessionStorage.getItem("door") == Door.count) {
     state = 'win game';
@@ -210,6 +206,7 @@ function happyEnding() { //how the player clears the main game
 
 }
 
+//when the game is done and they want to replay
 function replay() {
   if (keyIsDown(ENTER) && state === 'win game') {
     state = 'simulation';
