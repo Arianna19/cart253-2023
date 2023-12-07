@@ -1,0 +1,9 @@
+# PROJECT 2: ANYTHING = ULTIMATE KIRBY WORLD 
+
+My artisitc vision for this project is to create a cute/small kirby platform based game. This main game is compromised of mini games which are my past exercises throught the semester and each time the game is cleared the player is closer to clearing the main game. I want the user experience to be easy and simple, games nowadays are getting so complicated and sometimes I just want to relax and go back to the basics without having to break my brain too much. 
+
+I would say the target audience is really young kids which explains the artsyle and the simplicity of the game itself. I didn't want it to be complicated and just wanted it to be bright and simple! 
+
+I feel I achieved my desired effect technically because figuring out how to merge everything together was definetely a challenge and to make it seem somewhat seamless was another. Much research was done to figure out how to play with the html and url pages themselves and creating new ones. Moreover, technical wise moving the camera is what completely destroyed my brain also during this project. This is definetly where I spent most of the time in the project. BUT! I succeeded. Briefly, my overall objective with the "main world" in this project was to make the camera move and to switch worlds easily. With that being done in the project I see that I did in fact technically accomplish everything!
+
+ On the other hand artiscally I feel I did okay the concept and that the style is there. It could definetely be improved with more time but such a thing runs out as a busy university student. Nevertheless artistically I do beleive it is a coehsif game visually and kinda cute (tbh). The Christmas vibe is definetely all over the game and the winter wonderland aspect as well. I would say that's a pretty well delivered artistc concept.
